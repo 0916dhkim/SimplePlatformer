@@ -67,3 +67,5 @@ add_library (box2d STATIC
 	Box2D/Box2D/Box2D/Rope/b2Rope.cpp
 )
 target_include_directories(box2d PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/Box2D/Box2D")
+
+add_subdirectory(src)
