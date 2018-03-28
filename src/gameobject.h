@@ -1,0 +1,6 @@
+#ifndef SIMPLEPLATFORMER_GAMEOBJECT_H
+#define SIMPLEPLATFORMER_GAMEOBJECT_H
+class GameObject {
+  // TODO Implement GameObject
+};
+#endif //SIMPLEPLATFORMER_GAMEOBJECT_H
