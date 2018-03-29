@@ -7,6 +7,7 @@
 class Scene {
  public:
   std::string GetName() const;
+  explicit Scene(const std::string &name);
  private:
   // Scene name
   const std::string name;
