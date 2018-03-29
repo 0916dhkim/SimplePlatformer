@@ -6,7 +6,7 @@
 // Scene class holds game objects to be instantiated.
 class Scene {
  public:
-  const std::string &GetName();
+  std::string GetName() const;
  private:
   // Scene name
   const std::string name;

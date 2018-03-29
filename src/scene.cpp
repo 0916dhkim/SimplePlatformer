@@ -1,2 +1,2 @@
 #include <scene.h>
-const std::string &Scene::GetName() { return this->name; }
+std::string Scene::GetName() const { return this->name; }
