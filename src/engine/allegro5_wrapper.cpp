@@ -1,4 +1,4 @@
-#include <allegro5_wrapper.h>
+#include <engine/allegro5_wrapper.h>
 Allegro5Wrapper::Allegro5Wrapper() {
   al_init();
   display = al_create_display(kDefaultWidth, kDefaultHeight);

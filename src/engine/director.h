@@ -1,9 +1,9 @@
-#ifndef SIMPLEPLATFORMER_DIRECTOR_H
-#define SIMPLEPLATFORMER_DIRECTOR_H
+#ifndef SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
+#define SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
 #include <vector>
 #include <memory>
-#include <scene.h>
-#include <allegro5_wrapper.h>
+#include <engine/scene.h>
+#include <engine/allegro5_wrapper.h>
 // Director class manages all scenes in game.
 // This is a singleton class, so at any given time, there should only be one instance of Director existing.
 class Director {
@@ -30,4 +30,4 @@ class Director {
   // Collection of all scenes in game.
   std::vector<Scene> scenes;
 };
-#endif //SIMPLEPLATFORMER_DIRECTOR_H
+#endif //SIMPLEPLATFORMER_ENGINE_DIRECTOR_H

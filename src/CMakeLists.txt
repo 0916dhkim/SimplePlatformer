@@ -1,8 +1,8 @@
 add_executable(simpleplatformer
+        engine/director.cpp
+        engine/scene.cpp
+        engine/allegro5_wrapper.cpp
         main.cpp
-        director.cpp
-        scene.cpp
-        allegro5_wrapper.cpp
-        )
+)
 target_link_libraries(simpleplatformer allegro)
 target_include_directories(simpleplatformer PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
