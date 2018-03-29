@@ -1,6 +1,7 @@
-#include <iostream>
+#include <director.h>
 
 int main(int argc, char **argv) {
-  std::cout << "Hello, World!" << std::endl;
+  Director::AddScene("MyScene");
+  Director::Start();
   return 0;
 }
