@@ -1,6 +1,5 @@
 cmake_minimum_required (VERSION 2.8.12)
 project (SIMPLEPLATFORMER)
-include (ExternalProject)
 
 # Use C++11
 set (CMAKE_CXX_STANDARD 11)
@@ -11,11 +10,8 @@ set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 # Allegro5
-ExternalProject_Add (ALLEGRO
-	PREFIX "allegro5"
-	SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/allegro5"
-	INSTALL_COMMAND ""
-)
+add_subdirectory (allegro5)
+target_include_directories (allegro PUBLIC "${ALLEGRO_SOURCE_DIR}/include" "${ALLEGRO_BINARY_DIR}/include")
 
 # Box2D
 add_library (box2d STATIC
