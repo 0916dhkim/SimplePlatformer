@@ -1,14 +1,16 @@
 #include <engine/director.h>
-const float Director::kLoopInterval = 1.0f/60.0f;
+const float Director::kLoopInterval = 1.0f / 60.0f;
 
-Scene &Director::AddScene(const std::string &name){
+Scene &Director::AddScene(const std::string &name) {
   Director::Get().scenes.emplace_back(name);
+  return Director::Get().scenes.back();
 }
 
 void Director::Start() {
   while (true) {
     // Handle events.
     auto ev = Director::Get().allegro.WaitForEventTimed(kLoopInterval);
+
     if (ev != nullptr) {
       if (ev->type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
         // Window close event fired.
