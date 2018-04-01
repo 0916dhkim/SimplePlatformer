@@ -1,2 +1,2 @@
-#include <engine/scene.h>
+#include <engine/scene.hpp>
 Scene::Scene() : gameobjects() {}

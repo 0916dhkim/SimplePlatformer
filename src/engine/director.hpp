@@ -2,8 +2,8 @@
 #define SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
 #include <map>
 #include <memory>
-#include <engine/scene.h>
-#include <engine/allegro5_wrapper.h>
+#include <engine/scene.hpp>
+#include <engine/allegro5_wrapper.hpp>
 // Director class manages all scenes in game.
 // This is a singleton class, so at any given time, there should only be one instance of Director existing.
 class Director {

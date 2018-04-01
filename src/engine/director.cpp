@@ -1,4 +1,4 @@
-#include <engine/director.h>
+#include <engine/director.hpp>
 const float Director::kLoopInterval = 1.0f / 60.0f;
 
 std::pair<std::map<std::string, Scene>::iterator, bool> Director::AddScene(

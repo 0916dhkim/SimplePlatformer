@@ -1,4 +1,4 @@
-#include <engine/director.h>
+#include <engine/director.hpp>
 
 int main(int argc, char **argv) {
   Director::AddScene("MyScene");

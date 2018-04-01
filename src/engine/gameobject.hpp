@@ -3,4 +3,4 @@
 class GameObject {
   // TODO Implement GameObject
 };
-#endif //SIMPLEPLATFORMER_ENGINE_GAMEOBJECT_H
+#endif  // SIMPLEPLATFORMER_ENGINE_GAMEOBJECT_H
