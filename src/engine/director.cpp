@@ -1,9 +1,10 @@
 #include <engine/director.h>
 const float Director::kLoopInterval = 1.0f / 60.0f;
 
-Scene &Director::AddScene(const std::string &name) {
-  Director::Get().scenes.emplace_back(name);
-  return Director::Get().scenes.back();
+std::pair<std::map<std::string, Scene>::iterator, bool> Director::AddScene(
+    const std::string& name) {
+  return Director::Get().scenes.emplace(
+      std::pair<std::string, Scene>(name, Scene()));
 }
 
 void Director::Start() {
@@ -22,7 +23,7 @@ void Director::Start() {
   }
 }
 
-Director &Director::Get() {
+Director& Director::Get() {
   static Director instance;
   return instance;
 }

@@ -1,6 +1,6 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
 #define SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
-#include <vector>
+#include <map>
 #include <memory>
 #include <engine/scene.h>
 #include <engine/allegro5_wrapper.h>
@@ -12,7 +12,7 @@ class Director {
   static const float kLoopInterval;
 
   // Append a new scene to scenes and return its reference.
-  static Scene &AddScene(const std::string &name);
+  static std::pair<std::map<std::string, Scene>::iterator, bool> AddScene(const std::string &name);
 
   // Start the main game loop.
   static void Start();
@@ -28,6 +28,6 @@ class Director {
   Allegro5Wrapper allegro;
 
   // Collection of all scenes in game.
-  std::vector<Scene> scenes;
+  std::map<std::string, Scene> scenes;
 };
 #endif //SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
