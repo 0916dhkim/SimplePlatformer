@@ -1,5 +1,7 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_GAMEOBJECT_H
 #define SIMPLEPLATFORMER_ENGINE_GAMEOBJECT_H
+#include <engine/renderer/renderer.hpp>
+#include <memory>
 #include <utility>
 class GameObject {
 public:
@@ -15,5 +17,6 @@ public:
     TransformPoint(const std::pair<float, float> &point,
                    const std::pair<float, float> &dimension) const;
   } transform;
+  std::unique_ptr<Renderer> renderer;
 };
 #endif // SIMPLEPLATFORMER_ENGINE_GAMEOBJECT_H
