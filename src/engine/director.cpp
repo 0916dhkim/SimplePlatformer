@@ -7,6 +7,8 @@ std::pair<std::map<std::string, Scene>::iterator, bool> Director::AddScene(
       std::pair<std::string, Scene>(name, Scene()));
 }
 
+Allegro5Wrapper& Director::Allegro() { return Director::Get().allegro; }
+
 void Director::Start() {
   while (true) {
     // Handle events.

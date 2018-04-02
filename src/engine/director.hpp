@@ -16,6 +16,9 @@ class Director {
   static std::pair<std::map<std::string, Scene>::iterator, bool> AddScene(
       const std::string &name);
 
+  // Get Allegro Wrapper.
+  static Allegro5Wrapper &Allegro();
+
   // Start the main game loop.
   static void Start();
 
