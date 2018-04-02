@@ -23,8 +23,8 @@ void Allegro5Wrapper::FlipDisplay() { al_flip_display(); }
 std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>
 Allegro5Wrapper::WaitForEventTimed(float secs) {
   // Dynamically allocate an ALLEGRO_EVENT.
-  auto ret = std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>{
-      (ALLEGRO_EVENT *)malloc(sizeof(ALLEGRO_EVENT)), free};
+  auto ret =
+      std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>{new ALLEGRO_EVENT, free};
 
   if (al_wait_for_event_timed(event_queue, ret.get(), secs)) {
     // event_queue is not empty.
