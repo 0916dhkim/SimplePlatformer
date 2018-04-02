@@ -4,6 +4,7 @@
 // Abstract class
 class Renderer {
  public:
-  virtual void Render(GameObject gameobject) const;
+  virtual ~Renderer(){};
+  virtual void Render(GameObject gameobject) const = 0;
 };
 #endif  // SIMPLEPLATFORMER_ENGINE_RENDERER_RENDERER_H

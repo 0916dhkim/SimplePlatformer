@@ -7,19 +7,18 @@ TriangleRenderer::TriangleRenderer(float sideLength, Color color)
 
 void TriangleRenderer::Render(GameObject gameobject) const {
   // Calculate the coordinates of the triangle.
-  const float pi = atan(1.0f) * 4.0f;
-  float x[3];
-  float y[3];
+  std::array<std::pair<float, float>, 3> points = {
+      {{0, 0},
+       {sideLength, 0},
+       {sideLength * sqrt(3.0f) / 2.0f, sideLength / 2.0f}}};
 
-  float theta = pi / 2.0f + gameobject.transform.rotation;
-  float armLength = 2.0f * sideLength / sqrt(3.0f);
-  for (int i = 0; i < 3; i++) {
-    x[i] = armLength * cos(theta);
-    y[i] = armLength * sin(theta);
-    theta += 2.0f * pi / 3.0f;
+  for (std::pair<float, float> &p : points) {
+    p = gameobject.transform.TransformPoint(
+        p, {sideLength, sideLength * sqrt(3.0f) / 2.0f});
   }
 
   // Render.
-  Director::Allegro().DrawFilledTriangle(x[0], y[0], x[1], y[1], x[2], y[2],
-                                         color);
+  Director::Allegro().DrawFilledTriangle(
+      points[0].first, points[0].second, points[1].first, points[1].second,
+      points[2].first, points[2].second, color);
 }
