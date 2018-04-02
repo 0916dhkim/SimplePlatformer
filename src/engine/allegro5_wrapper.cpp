@@ -29,9 +29,8 @@ Allegro5Wrapper::WaitForEventTimed(float secs) {
   if (al_wait_for_event_timed(event_queue, ret.get(), secs)) {
     // event_queue is not empty.
     return ret;
-  } else {
-    // event_queue is empty.
-    ret.reset(nullptr);
-    return ret;
   }
+  // event_queue is empty.
+  ret.reset(nullptr);
+  return ret;
 }
