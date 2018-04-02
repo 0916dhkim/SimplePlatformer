@@ -11,13 +11,13 @@ std::pair<float, float> GameObject::Transform::TransformPoint(
   p.second -= dimension.second * pivot.second;
 
   // Calculate the displacement considering scale.
-  float d = sqrt(p.first * p.first * scale.first +
+  float d = std::sqrt(p.first * p.first * scale.first +
                  p.second * p.second * scale.second);
-  float theta = atan(p.second / p.first) + rotation;
+  float theta = std::atan(p.second / p.first) + rotation;
 
   // Calculate transformed position.
-  p.first = d * cos(theta) + position.first;
-  p.second = d * sin(theta) + position.second;
+  p.first = d * std::cos(theta) + position.first;
+  p.second = d * std::sin(theta) + position.second;
 
   return p;
 }

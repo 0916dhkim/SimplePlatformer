@@ -10,11 +10,11 @@ void TriangleRenderer::Render(GameObject gameobject) const {
   std::array<std::pair<float, float>, 3> points = {
       {{0, 0},
        {sideLength, 0},
-       {sideLength * sqrt(3.0f) / 2.0f, sideLength / 2.0f}}};
+       {sideLength * std::sqrt(3.0f) / 2.0f, sideLength / 2.0f}}};
 
   for (std::pair<float, float> &p : points) {
     p = gameobject.transform.TransformPoint(
-        p, {sideLength, sideLength * sqrt(3.0f) / 2.0f});
+        p, {sideLength, sideLength * std::sqrt(3.0f) / 2.0f});
   }
 
   // Render.
