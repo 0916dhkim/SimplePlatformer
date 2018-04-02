@@ -12,6 +12,12 @@ Allegro5Wrapper::~Allegro5Wrapper() {
   al_destroy_event_queue(event_queue);
 }
 
+void Allegro5Wrapper::DrawFilledTriangle(float x1, float y1, float x2, float y2,
+                                         float x3, float y3,
+                                         ALLEGRO_COLOR color) {
+  al_draw_filled_triangle(x1, y1, x2, y2, x3, y3, color);
+}
+
 void Allegro5Wrapper::FlipDisplay() { al_flip_display(); }
 
 std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>
