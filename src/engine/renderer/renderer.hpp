@@ -3,8 +3,8 @@
 #include <engine/gameobject.hpp>
 // Abstract class
 class Renderer {
- public:
+public:
   virtual ~Renderer(){};
   virtual void Render(GameObject gameobject) const = 0;
 };
-#endif  // SIMPLEPLATFORMER_ENGINE_RENDERER_RENDERER_H
+#endif // SIMPLEPLATFORMER_ENGINE_RENDERER_RENDERER_H

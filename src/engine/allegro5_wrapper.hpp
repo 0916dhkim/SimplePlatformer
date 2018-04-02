@@ -7,7 +7,7 @@ extern "C" {
 #include <allegro5/allegro_primitives.h>
 }
 class Allegro5Wrapper {
- public:
+public:
   Allegro5Wrapper();
   ~Allegro5Wrapper();
 
@@ -19,13 +19,13 @@ class Allegro5Wrapper {
   void FlipDisplay();
 
   // Wrapper for al_wait_for_event_timed
-  std::unique_ptr<ALLEGRO_EVENT, decltype(free) *> WaitForEventTimed(
-      float secs);
+  std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>
+  WaitForEventTimed(float secs);
 
- private:
+private:
   const int kDefaultWidth = 960;
   const int kDefaultHeight = 720;
   ALLEGRO_DISPLAY *display;
   ALLEGRO_EVENT_QUEUE *event_queue;
 };
-#endif  // SIMPLEPLATFORMER_ENGINE_ALLEGRO5_WRAPPER_H
+#endif // SIMPLEPLATFORMER_ENGINE_ALLEGRO5_WRAPPER_H

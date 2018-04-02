@@ -10,4 +10,4 @@ struct Color {
   Color(unsigned char r, unsigned char g, unsigned char b)
       : r(r), g(g), b(b), a(255){};
 };
-#endif  // SIMPLEPLATFORMER_ENGINE_COLOR_H
+#endif // SIMPLEPLATFORMER_ENGINE_COLOR_H

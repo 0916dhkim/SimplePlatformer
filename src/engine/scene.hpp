@@ -5,11 +5,11 @@
 #include <vector>
 // Scene class holds game objects to be instantiated.
 class Scene {
- public:
+public:
   Scene();
 
- private:
+private:
   // Collection of all game objects in this scene.
   std::vector<GameObject> gameobjects;
 };
-#endif  // SIMPLEPLATFORMER_ENGINE_SCENE_H
+#endif // SIMPLEPLATFORMER_ENGINE_SCENE_H

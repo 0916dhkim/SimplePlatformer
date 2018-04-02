@@ -2,7 +2,7 @@
 #define SIMPLEPLATFORMER_ENGINE_GAMEOBJECT_H
 #include <utility>
 class GameObject {
- public:
+public:
   struct Transform {
     std::pair<float, float> pivot = {0.5, 0.5};
     std::pair<float, float> position = {0, 0};
@@ -11,9 +11,9 @@ class GameObject {
 
     // Apply translation, rotation, and scale to the given point
     // regarding pivot.
-    std::pair<float, float> TransformPoint(
-        const std::pair<float, float> &point,
-        const std::pair<float, float> &dimension) const;
+    std::pair<float, float>
+    TransformPoint(const std::pair<float, float> &point,
+                   const std::pair<float, float> &dimension) const;
   } transform;
 };
-#endif  // SIMPLEPLATFORMER_ENGINE_GAMEOBJECT_H
+#endif // SIMPLEPLATFORMER_ENGINE_GAMEOBJECT_H
