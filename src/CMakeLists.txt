@@ -1,10 +1,12 @@
 add_executable(simpleplatformer
-        engine/renderer/triangle_renderer.cpp
-        engine/allegro5_wrapper.cpp
-        engine/director.cpp
-        engine/gameobject.cpp
-        engine/scene.cpp
-        main.cpp
+  engine/renderer/renderer.cpp
+  engine/renderer/triangle_renderer.cpp
+  engine/actor.cpp
+  engine/allegro5_wrapper.cpp
+  engine/director.cpp
+  engine/stage.cpp
+  game/main_scene.cpp
+  main.cpp
 )
 target_link_libraries(simpleplatformer box2d allegro allegro_primitives)
 target_include_directories(simpleplatformer PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")

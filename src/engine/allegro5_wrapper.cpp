@@ -1,6 +1,7 @@
 #include <engine/allegro5_wrapper.hpp>
 Allegro5Wrapper::Allegro5Wrapper() {
   al_init();
+  al_init_primitives_addon();
 
   display = al_create_display(kDefaultWidth, kDefaultHeight);
   event_queue = al_create_event_queue();
@@ -19,6 +20,12 @@ void Allegro5Wrapper::DrawFilledTriangle(float x1, float y1, float x2, float y2,
 }
 
 void Allegro5Wrapper::FlipDisplay() { al_flip_display(); }
+
+int Allegro5Wrapper::GetDisplayHeight() {
+  return al_get_display_height(display);
+}
+
+int Allegro5Wrapper::GetDisplayWidth() { return al_get_display_width(display); }
 
 std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>
 Allegro5Wrapper::WaitForEventTimed(float secs) {

@@ -18,6 +18,12 @@ public:
   // Wrapper for al_flip_display
   void FlipDisplay();
 
+  // Wrapper for al_get_display_height
+  int GetDisplayHeight();
+
+  // Wrapper for al_get_display_width
+  int GetDisplayWidth();
+
   // Wrapper for al_wait_for_event_timed
   std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>
   WaitForEventTimed(float secs);
