@@ -1,7 +1,6 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_STAGE_H
 #define SIMPLEPLATFORMER_ENGINE_STAGE_H
 #include <engine/actor.hpp>
-#include <engine/scene.hpp>
 #include <map>
 #include <memory>
 class Stage {
@@ -13,19 +12,20 @@ public:
   Stage(const Stage &) = delete;
   Stage(Stage &&) = delete;
 
-  void LoadScene(const Scene &scene);
+  // Add an actor to the stage.
+  // Return the reference to the created actor.
+  std::shared_ptr<Actor> AddActor();
+
+  Camera &GetCamera();
+
   void Render() const;
 
 private:
   // All actors
-  std::map<unsigned long, std::shared_ptr<Actor>> actors;
+  std::map<std::uint_fast64_t, std::shared_ptr<Actor>> actors;
 
   // Camera
   Camera camera;
-
-  // Create an actor from game object and put it on the stage.
-  // Return id of the created actor.
-  unsigned long AddGameObject(const GameObject &gameobject);
 
   // Clear the stage.
   void Clear();

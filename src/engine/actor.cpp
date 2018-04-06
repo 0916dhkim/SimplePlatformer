@@ -1,16 +1,11 @@
 #include <engine/actor.hpp>
-#include <engine/renderable/renderable.hpp>
 #include <engine/renderer/triangle_renderer.hpp>
-Actor::Actor(const unsigned long &id, const GameObject &gameobject)
-    : id(id), gameobject(gameobject) {
-  switch(gameobject.renderable.type) {
-    case Renderable::Type::TRIANGLE:
-      renderer.reset(new TriangleRenderer(gameobject));
-      break;
-  }
-}
+Actor::Actor(std::uint_fast64_t id) : id(id) {}
+
+void Actor::AddRenderer(Renderer *renderer) { this->renderer.reset(renderer); }
+
+Transform &Actor::GetTransform() { return transform; }
 
 void Actor::Render(const Camera &camera) const {
-  renderer->Render(gameobject.transform, camera);
+  renderer->Render(transform, camera);
 }
-

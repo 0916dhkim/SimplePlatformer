@@ -1,18 +1,24 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_ACTOR_H
 #define SIMPLEPLATFORMER_ENGINE_ACTOR_H
-#include <engine/gameobject.hpp>
+#include <cstdint>
 #include <engine/renderer/renderer.hpp>
+#include <engine/transform.hpp>
 #include <memory>
 class Actor {
 public:
-  Actor(const unsigned long &id, const GameObject &gameobject);
+  Actor(std::uint_fast64_t id);
+
+  // Replace actor's current renderer with the given one.
+  void AddRenderer(Renderer *renderer);
+
+  Transform &GetTransform();
 
   // Render the game object given the transform of the camera.
   void Render(const Camera &camera) const;
 
 private:
-  unsigned long id;
-  GameObject gameobject;
+  std::uint_fast64_t id;
+  Transform transform;
   std::unique_ptr<Renderer> renderer;
 };
 #endif // SIMPLEPLATFORMER_ENGINE_ACTOR_H

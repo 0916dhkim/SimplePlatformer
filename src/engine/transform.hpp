@@ -1,22 +1,18 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_TRANSFORM_H
 #define SIMPLEPLATFORMER_ENGINE_TRANSFORM_H
 #include <utility>
-struct Transform {
-  struct Pivot {
-    float x = 0.5;
-    float y = 0.5;
-  } pivot;
+struct Vector2 {
+  float x;
+  float y;
+};
 
-  struct Position {
-    float x = 0;
-    float y = 0;
-  } position;
+struct Transform {
+  Vector2 pivot = {0.5, 0.5};
+
+  Vector2 position = {0, 0};
 
   float rotation = 0;
 
-  struct Scale {
-    float x = 1;
-    float y = 1;
-  } scale;
+  Vector2 scale = {1, 1};
 };
 #endif // SIMPLEPLATFORMER_ENGINE_TRANSFORM_H

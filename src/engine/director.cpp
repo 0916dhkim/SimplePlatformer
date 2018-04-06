@@ -1,26 +1,10 @@
 #include <engine/director.hpp>
 const float Director::kLoopInterval = 1.0f / 60.0f;
 
-std::pair<std::map<std::string, Scene>::iterator, bool>
-Director::AddScene(const std::string &name) {
-  return Director::Get().scenes.emplace(
-      std::pair<std::string, Scene>(name, Scene()));
-}
-std::pair<std::map<std::string, Scene>::iterator, bool>
-Director::AddScene(const std::string &name, const Scene &scene) {
-  return Director::Get().scenes.emplace(
-      std::pair<std::string, Scene>(name, scene));
-}
-
 Allegro5Wrapper &Director::Allegro() { return Director::Get().allegro; }
 
-void Director::LoadScene(const std::string &name) {
-  auto res = Director::Get().scenes.find(name);
-  if (res != Director::Get().scenes.end()) {
-    // Scene found.
-    Director::Get().stage.LoadScene(res->second);
-  }
-  // Scene not found.
+void Director::LoadScene(const Scene &scene) {
+  scene.Play(Director::Get().stage);
 }
 
 void Director::Start() {

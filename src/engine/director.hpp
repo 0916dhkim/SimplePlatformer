@@ -13,17 +13,11 @@ public:
   // Default refresh rate.
   static const float kLoopInterval;
 
-  // Append a new scene to scenes and return its reference.
-  static std::pair<std::map<std::string, Scene>::iterator, bool>
-  AddScene(const std::string &name);
-  static std::pair<std::map<std::string, Scene>::iterator, bool>
-  AddScene(const std::string &name, const Scene &scene);
-
   // Get Allegro Wrapper.
   static Allegro5Wrapper &Allegro();
 
-  // Load a scene by name.
-  static void LoadScene(const std::string &name);
+  // Load a scene.
+  static void LoadScene(const Scene &scene);
 
   // Start the main game loop.
   static void Start();
@@ -39,9 +33,6 @@ private:
 
   // Allegro wrapper instance for graphics management.
   Allegro5Wrapper allegro;
-
-  // Collection of all scenes in game.
-  std::map<std::string, Scene> scenes;
 
   // The scene that is loaded in game.
   Stage stage;
