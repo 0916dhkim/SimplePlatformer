@@ -8,7 +8,7 @@ std::shared_ptr<Actor> Stage::AddActor() {
   // Static variable holding the next id to be assigned.
   static std::uint_fast64_t next_id = 1;
 
-  auto res = actors.emplace(next_id, new Actor(next_id));
+  auto res = actors.emplace(next_id, std::make_shared<Actor>(next_id));
   if (res.second) {
     // Emplace successful.
     next_id++;

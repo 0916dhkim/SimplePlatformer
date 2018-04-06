@@ -7,7 +7,8 @@ void MainScene::Play(Stage &stage) const {
 
   std::shared_ptr<Actor> a1 = stage.AddActor();
   if (a1 != nullptr) {
-    a1->AddRenderer(new TriangleRenderer(3, {255, 255, 255, 255}));
+    a1->AddRenderer(std::unique_ptr<Renderer>(
+        new TriangleRenderer(3, {255, 255, 255, 255})));
     a1->GetTransform().pivot = {0, 0};
   }
 }

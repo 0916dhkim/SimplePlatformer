@@ -9,7 +9,7 @@ public:
   Actor(std::uint_fast64_t id);
 
   // Replace actor's current renderer with the given one.
-  void AddRenderer(Renderer *renderer);
+  void AddRenderer(std::unique_ptr<Renderer> &&renderer);
 
   Transform &GetTransform();
 
