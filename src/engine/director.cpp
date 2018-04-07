@@ -1,5 +1,10 @@
 #include <engine/director.hpp>
+Director::Director() : world(b2Vec2()) {}
+
 const float Director::kLoopInterval = 1.0f / 60.0f;
+const float kPhysicsTimeStep = 1.0f / 60.0f;
+const int kPhysicsVelocityIterations = 8;
+const int kPhysicsPositionIterations = 3;
 
 Allegro5Wrapper &Director::Allegro() { return Director::Get().allegro; }
 

@@ -1,9 +1,9 @@
 add_executable(simpleplatformer
-  engine/renderer/renderer.cpp
-  engine/renderer/triangle_renderer.cpp
   engine/actor.cpp
   engine/allegro5_wrapper.cpp
   engine/director.cpp
+  engine/renderer/renderer.cpp
+  engine/renderer/triangle_renderer.cpp
   engine/stage.cpp
   game/main_scene.cpp
   main.cpp
