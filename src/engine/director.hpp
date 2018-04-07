@@ -1,6 +1,7 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
 #define SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
 #include <Box2D/Box2D.h>
+#include <chrono>
 #include <engine/allegro5_wrapper.hpp>
 #include <engine/scene.hpp>
 #include <engine/stage.hpp>
@@ -14,6 +15,9 @@ public:
   // Get Allegro Wrapper.
   static Allegro5Wrapper &Allegro();
 
+  // Get Box2D world.
+  static b2World &GetWorld();
+
   // Load a scene.
   static void LoadScene(const Scene &scene);
 
@@ -23,8 +27,6 @@ public:
 private:
   // Default refresh rate.
   static const float kLoopInterval;
-  // Time step for Box2D physics simulation.
-  static const float kPhysicsTimeStep;
   // Iteration count for velocity.
   static const int kPhysicsVelocityIterations;
   // Iteration count for position.
@@ -41,7 +43,14 @@ private:
   // Allegro wrapper instance for graphics management.
   Allegro5Wrapper allegro;
 
-  // Box2D world wrapper instance
+  // Time interval between the latest two frames.
+  // Measured in seconds.
+  std::chrono::duration<float> dt;
+
+  // Timestamp of the lastest frame.
+  std::chrono::time_point<std::chrono::steady_clock> timestamp;
+
+  // Box2D world instance
   b2World world;
 
   // The scene that is loaded in game.

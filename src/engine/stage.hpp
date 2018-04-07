@@ -20,6 +20,8 @@ public:
 
   void Render() const;
 
+  void UpdateTransform();
+
 private:
   // All actors
   std::map<std::uint_fast64_t, std::shared_ptr<Actor>> actors;

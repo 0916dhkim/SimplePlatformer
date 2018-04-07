@@ -25,3 +25,9 @@ void Stage::Render() const {
     a.second->Render(camera);
   }
 }
+
+void Stage::UpdateTransform() {
+  for (auto a : actors) {
+    a.second->UpdateTransform();
+  }
+}

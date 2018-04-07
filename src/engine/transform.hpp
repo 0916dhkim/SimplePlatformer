@@ -1,7 +1,6 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_TRANSFORM_H
 #define SIMPLEPLATFORMER_ENGINE_TRANSFORM_H
 #include <Box2D/Common/b2Math.h> // b2Vec2
-#include <utility>
 struct Transform {
   b2Vec2 pivot = {0.5, 0.5};
 
