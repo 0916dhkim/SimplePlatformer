@@ -7,7 +7,7 @@ TriangleRenderer::TriangleRenderer(float sideLength, const Color &color)
 
 void TriangleRenderer::Render(const Transform &object_transform,
                               const Camera &camera) const {
-  std::array<Vector2, 3> vertices;
+  std::array<b2Vec2, 3> vertices;
   float w = sideLength;
   float h = w * std::sqrt(3.0f) / 2.0f;
   vertices[0].x = 0;
@@ -16,7 +16,7 @@ void TriangleRenderer::Render(const Transform &object_transform,
   vertices[1].y = h;
   vertices[2].x = w;
   vertices[2].y = 0;
-  for (Vector2 &v : vertices) {
+  for (b2Vec2 &v : vertices) {
     v = VertexCoordinate(object_transform, camera, v, w, h);
   }
 
