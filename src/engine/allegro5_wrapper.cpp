@@ -23,6 +23,12 @@ void Allegro5Wrapper::DrawFilledTriangle(float x1, float y1, float x2, float y2,
                           al_map_rgba(color.r, color.g, color.b, color.a));
 }
 
+void Allegro5Wrapper::DrawLine(float x1, float y1, float x2, float y2,
+                               Color color, float thickness) {
+  al_draw_line(x1, y1, x2, y2, al_map_rgba(color.r, color.g, color.b, color.a),
+               thickness);
+}
+
 void Allegro5Wrapper::FlipDisplay() { al_flip_display(); }
 
 int Allegro5Wrapper::GetDisplayHeight() {

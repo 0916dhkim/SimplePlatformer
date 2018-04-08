@@ -9,7 +9,6 @@ DynamicTriangle::DynamicTriangle(float sideLength, const Transform &transform) {
   // Create body.
   b2BodyDef bdef;
   bdef.type = b2_dynamicBody;
-  bdef.position.Set(0, 0);
   bdef.position = transform.position;
   body = Director::GetWorld().CreateBody(&bdef);
 

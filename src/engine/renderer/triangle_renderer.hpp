@@ -6,8 +6,8 @@
 class TriangleRenderer : public Renderer {
 public:
   TriangleRenderer(float sideLength, const Color &color);
-  virtual void Render(const Transform &object_transform,
-                      const Camera &camera) const;
+  void Render(const Transform &object_transform,
+              const Camera &camera) const override;
 
 private:
   float sideLength;
