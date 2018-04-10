@@ -15,12 +15,10 @@ public:
   void ClearToColor(Color color);
 
   // Wrapper for al_draw_filled_triangle
-  void DrawFilledTriangle(float x1, float y1, float x2, float y2, float x3,
-                          float y3, Color color);
+  void DrawFilledTriangle(float x1, float y1, float x2, float y2, float x3, float y3, Color color);
 
   // Wrapper for al_draw_line
-  void DrawLine(float x1, float y1, float x2, float y2, Color color,
-                float thickness);
+  void DrawLine(float x1, float y1, float x2, float y2, Color color, float thickness);
 
   // Wrapper for al_flip_display
   void FlipDisplay();
@@ -32,8 +30,7 @@ public:
   int GetDisplayWidth();
 
   // Wrapper for al_wait_for_event_timed
-  std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>
-  WaitForEventTimed(float secs);
+  std::unique_ptr<ALLEGRO_EVENT, decltype(free) *> WaitForEventTimed(float secs);
 
 private:
   const int kDefaultWidth = 960;

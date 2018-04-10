@@ -3,6 +3,6 @@
 #include <engine/scene.hpp>
 class MainScene : public Scene {
 public:
-  virtual void Play(Stage &stage) const;
+  void Play(Stage &stage) const override;
 };
 #endif // SIMPLEPLATFORMER_GAME_MAIN_SCENE_H

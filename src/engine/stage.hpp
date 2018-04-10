@@ -14,13 +14,14 @@ public:
 
   // Add an actor to the stage.
   // Return the reference to the created actor.
-  std::shared_ptr<Actor> AddActor();
+  std::shared_ptr<Actor> AddActor(float width, float height);
 
   Camera &GetCamera();
 
-  void Render() const;
-
-  void UpdateTransform();
+  // Return the begin and the end iterator of actors.
+  std::pair<std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator,
+            std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator>
+  GetActors();
 
 private:
   // All actors

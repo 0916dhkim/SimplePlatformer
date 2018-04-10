@@ -2,26 +2,19 @@
 #include <engine/director.hpp>
 #include <engine/renderer/triangle_renderer.hpp>
 #include <utility>
-TriangleRenderer::TriangleRenderer(float sideLength, const Color &color)
-    : sideLength(sideLength), color(color) {}
+TriangleRenderer::TriangleRenderer(Transform &transform, float sideLength, const Color &color)
+    : Renderer(transform), sideLength(sideLength), color(color) {}
 
-void TriangleRenderer::Render(const Transform &object_transform,
-                              const Camera &camera) const {
-  std::array<b2Vec2, 3> vertices;
+void TriangleRenderer::Render(const Camera &camera) const {
+  // Find where vertices are.
   float w = sideLength;
-  float h = w * std::sqrt(3.0f) / 2.0f;
-  vertices[0].x = 0;
-  vertices[0].y = 0;
-  vertices[1].x = w / 2.0f;
-  vertices[1].y = h;
-  vertices[2].x = w;
-  vertices[2].y = 0;
+  float h = sideLength * std::sqrt(3) / 2.0f;
+  std::array<b2Vec2, 3> vertices = {b2Vec2(0, 0), b2Vec2(w / 2.0f, h), b2Vec2(w, 0)};
   for (b2Vec2 &v : vertices) {
-    v = VertexCoordinate(object_transform, camera, v, w, h);
+    v = GetTransform().ToScreen(v, camera);
   }
 
-  // Render triangle.
-  Director::Allegro().DrawFilledTriangle(vertices[0].x, vertices[0].y,
-                                         vertices[1].x, vertices[1].y,
-                                         vertices[2].x, vertices[2].y, color);
+  // Render.
+  Director::Allegro().DrawFilledTriangle(vertices[0].x, vertices[0].y, vertices[1].x, vertices[1].y, vertices[2].x, vertices[2].y,
+                                         color);
 }

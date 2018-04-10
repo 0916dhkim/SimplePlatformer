@@ -1,6 +1,5 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
 #define SIMPLEPLATFORMER_ENGINE_DIRECTOR_H
-#include <Box2D/Box2D.h>
 #include <chrono>
 #include <engine/allegro5_wrapper.hpp>
 #include <engine/scene.hpp>
@@ -55,5 +54,9 @@ private:
 
   // The scene that is loaded in game.
   Stage stage;
+
+  void SimulatePhysics();
+
+  void Render();
 };
 #endif // SIMPLEPLATFORMER_ENGINE_DIRECTOR_H

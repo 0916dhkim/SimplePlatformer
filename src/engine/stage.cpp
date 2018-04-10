@@ -4,11 +4,11 @@ void Stage::Clear() {
   actors.clear();
 }
 
-std::shared_ptr<Actor> Stage::AddActor() {
+std::shared_ptr<Actor> Stage::AddActor(float width, float height) {
   // Static variable holding the next id to be assigned.
   static std::uint_fast64_t next_id = 1;
 
-  auto res = actors.emplace(next_id, std::make_shared<Actor>(next_id));
+  auto res = actors.emplace(next_id, std::make_shared<Actor>(next_id, width, height));
   if (res.second) {
     // Emplace successful.
     next_id++;
@@ -20,14 +20,8 @@ std::shared_ptr<Actor> Stage::AddActor() {
 
 Camera &Stage::GetCamera() { return camera; }
 
-void Stage::Render() const {
-  for (auto a : actors) {
-    a.second->Render(camera);
-  }
-}
-
-void Stage::UpdateTransform() {
-  for (auto a : actors) {
-    a.second->UpdateTransform();
-  }
+std::pair<std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator,
+          std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator>
+Stage::GetActors() {
+  return std::make_pair(actors.begin(), actors.end());
 }

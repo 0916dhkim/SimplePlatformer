@@ -4,9 +4,8 @@
 #include <engine/renderer/renderer.hpp>
 class LineRenderer : public Renderer {
 public:
-  LineRenderer(float length, const Color &color);
-  void Render(const Transform &object_transform,
-              const Camera &camera) const override;
+  LineRenderer(Transform &transform, float length, const Color &color);
+  void Render(const Camera &camera) const override;
 
 private:
   float length;

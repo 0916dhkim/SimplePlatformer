@@ -13,35 +13,25 @@ Allegro5Wrapper::~Allegro5Wrapper() {
   al_destroy_event_queue(event_queue);
 }
 
-void Allegro5Wrapper::ClearToColor(Color color) {
-  al_clear_to_color(al_map_rgba(color.r, color.g, color.b, color.a));
+void Allegro5Wrapper::ClearToColor(Color color) { al_clear_to_color(al_map_rgba(color.r, color.g, color.b, color.a)); }
+
+void Allegro5Wrapper::DrawFilledTriangle(float x1, float y1, float x2, float y2, float x3, float y3, Color color) {
+  al_draw_filled_triangle(x1, y1, x2, y2, x3, y3, al_map_rgba(color.r, color.g, color.b, color.a));
 }
 
-void Allegro5Wrapper::DrawFilledTriangle(float x1, float y1, float x2, float y2,
-                                         float x3, float y3, Color color) {
-  al_draw_filled_triangle(x1, y1, x2, y2, x3, y3,
-                          al_map_rgba(color.r, color.g, color.b, color.a));
-}
-
-void Allegro5Wrapper::DrawLine(float x1, float y1, float x2, float y2,
-                               Color color, float thickness) {
-  al_draw_line(x1, y1, x2, y2, al_map_rgba(color.r, color.g, color.b, color.a),
-               thickness);
+void Allegro5Wrapper::DrawLine(float x1, float y1, float x2, float y2, Color color, float thickness) {
+  al_draw_line(x1, y1, x2, y2, al_map_rgba(color.r, color.g, color.b, color.a), thickness);
 }
 
 void Allegro5Wrapper::FlipDisplay() { al_flip_display(); }
 
-int Allegro5Wrapper::GetDisplayHeight() {
-  return al_get_display_height(display);
-}
+int Allegro5Wrapper::GetDisplayHeight() { return al_get_display_height(display); }
 
 int Allegro5Wrapper::GetDisplayWidth() { return al_get_display_width(display); }
 
-std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>
-Allegro5Wrapper::WaitForEventTimed(float secs) {
+std::unique_ptr<ALLEGRO_EVENT, decltype(free) *> Allegro5Wrapper::WaitForEventTimed(float secs) {
   // Dynamically allocate an ALLEGRO_EVENT.
-  auto ret =
-      std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>{new ALLEGRO_EVENT, free};
+  auto ret = std::unique_ptr<ALLEGRO_EVENT, decltype(free) *>{new ALLEGRO_EVENT, free};
 
   if (al_wait_for_event_timed(event_queue, ret.get(), secs)) {
     // event_queue is not empty.

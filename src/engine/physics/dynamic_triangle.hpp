@@ -4,6 +4,10 @@
 #include <engine/transform.hpp>
 class DynamicTriangle : public PhysicalBody {
 public:
-  DynamicTriangle(float sideLength, const Transform &transform);
+  DynamicTriangle(const Transform &transform, float sideLength);
+  void UpdateShape(const Transform &transform) override;
+
+private:
+  float sideLength;
 };
 #endif // SIMPLEPLATFORMER_ENGINE_PHYSICS_DYNAMIC_TRIANGLE_H
