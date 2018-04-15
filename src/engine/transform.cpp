@@ -9,11 +9,11 @@ Transform::Transform(const b2Vec2 &size) : size(size) {
 
 Transform::Transform(const Transform &transform) = default;
 
-Transform::Transform(Transform &&transform) = default;
+Transform::Transform(Transform &&transform) noexcept = default;
 
 Transform &Transform::operator=(const Transform &transform) = default;
 
-Transform &Transform::operator=(Transform &&transform) = default;
+Transform &Transform::operator=(Transform &&transform) noexcept = default;
 
 b2Vec2 Transform::GetPivot() const { return pivot; }
 
@@ -73,7 +73,7 @@ b2Vec2 Transform::ToScreen(const b2Vec2 &orig, const Camera &camera) const {
                                        b2Mul(translateMat, // | Move origin to bottom left corner.
                                              v3)))));      // * Convert to world coordinates.
 
-  return b2Vec2(ret.x, ret.y);
+  return {ret.x, ret.y};
 }
 
 b2Vec2 Transform::ToWorld(const b2Vec2 &orig) const { return b2Mul(b2transform, ToPivot(orig)); }
@@ -85,5 +85,5 @@ b2Vec2 Transform::ToPivot(const b2Vec2 &orig) const {
   b2Mat33 scaleMat(b2Vec3(scale.x, 0, 0), b2Vec3(0, scale.y, 0), b2Vec3(0, 0, 1));
 
   b2Vec3 ret = b2Mul(scaleMat, b2Mul(pivotMat, v3));
-  return b2Vec2(ret.x, ret.y);
+  return {ret.x, ret.y};
 }

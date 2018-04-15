@@ -9,5 +9,8 @@ public:
 
 private:
   float sideLength;
+
+  // Non-virtual implemenation of UpdateShape.
+  void UpdateShapeImpl(const Transform &transform);
 };
 #endif // SIMPLEPLATFORMER_ENGINE_PHYSICS_DYNAMIC_TRIANGLE_H

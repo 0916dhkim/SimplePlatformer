@@ -2,9 +2,9 @@
 #include <engine/renderer/triangle_renderer.hpp>
 Actor::Actor(std::uint_fast64_t id, float width, float height) : id(id), transform(b2Vec2(width, height)) {}
 
-void Actor::SetBody(PhysicalBody *body) { this->body = std::unique_ptr<PhysicalBody>(body); }
+void Actor::SetBody(std::unique_ptr<PhysicalBody> &&physical_body) { this->body = std::move(physical_body); }
 
-void Actor::SetRenderer(Renderer *renderer) { this->renderer = std::unique_ptr<Renderer>(renderer); }
+void Actor::SetRenderer(std::unique_ptr<Renderer> &&renderer) { this->renderer = std::move(renderer); }
 
 void Actor::SetPosition(const b2Vec2 &position) {
   transform.SetPosition(position);

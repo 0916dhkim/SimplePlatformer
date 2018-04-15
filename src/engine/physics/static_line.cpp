@@ -8,10 +8,12 @@ StaticLine::StaticLine(const Transform &transform, float length) : length(length
   bdef.angle = transform.GetRotation();
   body = Director::GetWorld().CreateBody(&bdef);
 
-  UpdateShape(transform);
+  UpdateShapeImpl(transform);
 }
 
-void StaticLine::UpdateShape(const Transform &transform) {
+void StaticLine::UpdateShape(const Transform &transform) { return UpdateShapeImpl(transform); }
+
+void StaticLine::UpdateShapeImpl(const Transform &transform) {
   // Calculate the new shape.
   b2EdgeShape shape;
   b2Vec2 p1(0, 0), p2(length, 0);

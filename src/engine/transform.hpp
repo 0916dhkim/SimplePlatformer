@@ -9,9 +9,9 @@ public:
   // Adjust scale instead.
   Transform(const b2Vec2 &size);
   Transform(const Transform &transform);
-  Transform(Transform &&transform);
+  Transform(Transform &&transform) noexcept;
   Transform &operator=(const Transform &transform);
-  Transform &operator=(Transform &&transform);
+  Transform &operator=(Transform &&transform) noexcept;
 
   // Getters.
   b2Vec2 GetPosition() const;

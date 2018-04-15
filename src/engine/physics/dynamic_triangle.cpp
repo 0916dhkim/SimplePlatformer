@@ -12,10 +12,12 @@ DynamicTriangle::DynamicTriangle(const Transform &transform, float sideLength) :
   body = Director::GetWorld().CreateBody(&bdef);
 
   // Create Fixture.
-  UpdateShape(transform);
+  UpdateShapeImpl(transform);
 }
 
-void DynamicTriangle::UpdateShape(const Transform &transform) {
+void DynamicTriangle::UpdateShape(const Transform &transform) { return UpdateShapeImpl(transform); }
+
+void DynamicTriangle::UpdateShapeImpl(const Transform &transform) {
   // Calculate the new shape.
   b2PolygonShape shape;
   float w = sideLength;

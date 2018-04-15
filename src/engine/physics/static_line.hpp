@@ -8,5 +8,8 @@ public:
 
 private:
   float length;
+
+  // Non-virtual implementation of UpdateShape.
+  void UpdateShapeImpl(const Transform &transform);
 };
 #endif // SIMPLEPLATFORMER_ENGINE_PHYSICS_STATIC_LINE_H

@@ -1,5 +1,5 @@
 #include <engine/director.hpp>
-Director::Director() : world(b2Vec2(0, 0)) {}
+Director::Director() : world(b2Vec2(0, 0)), dt() {}
 
 const float Director::kLoopInterval = 1.0f / 60.0f;
 const int Director::kPhysicsVelocityIterations = 8;
