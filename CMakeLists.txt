@@ -10,12 +10,12 @@ set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 # Allegro5
-add_subdirectory (allegro5)
+add_subdirectory (allegro5 EXCLUDE_FROM_ALL)
 target_include_directories (allegro PUBLIC "${ALLEGRO_SOURCE_DIR}/include" "${ALLEGRO_BINARY_DIR}/include")
 target_include_directories (allegro_primitives PUBLIC "${ALLEGRO_SOURCE_DIR}/addons/primitives")
 
 # Box2D
-add_library (box2d STATIC
+add_library (box2d STATIC EXCLUDE_FROM_ALL
 	Box2D/Box2D/Box2D/Dynamics/b2Island.cpp
 	Box2D/Box2D/Box2D/Dynamics/b2WorldCallbacks.cpp
 	Box2D/Box2D/Box2D/Dynamics/b2Body.cpp
