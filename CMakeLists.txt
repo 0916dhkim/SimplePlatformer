@@ -13,6 +13,9 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 add_subdirectory (allegro5 EXCLUDE_FROM_ALL)
 target_include_directories (allegro PUBLIC "${ALLEGRO_SOURCE_DIR}/include" "${ALLEGRO_BINARY_DIR}/include")
 target_include_directories (allegro_primitives PUBLIC "${ALLEGRO_SOURCE_DIR}/addons/primitives")
+target_include_directories (allegro_font PUBLIC "${ALLEGRO_SOURCE_DIR}/addons/font")
+target_include_directories (allegro_ttf PUBLIC "${ALLEGRO_SOURCE_DIR}/addons/ttf")
+
 
 # Box2D
 add_library (box2d STATIC EXCLUDE_FROM_ALL
@@ -64,5 +67,8 @@ add_library (box2d STATIC EXCLUDE_FROM_ALL
 	Box2D/Box2D/Box2D/Rope/b2Rope.cpp
 )
 target_include_directories(box2d PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/Box2D/Box2D")
+
+# Resources
+add_subdirectory (res)
 
 add_subdirectory(src)

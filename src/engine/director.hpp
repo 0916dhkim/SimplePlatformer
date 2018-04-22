@@ -25,7 +25,7 @@ public:
 
 private:
   // Default refresh rate.
-  static const float kLoopInterval;
+  static const double kLoopInterval;
   // Iteration count for velocity.
   static const int kPhysicsVelocityIterations;
   // Iteration count for position.
@@ -42,9 +42,12 @@ private:
   // Allegro wrapper instance for graphics management.
   Allegro5Wrapper allegro;
 
+  // Font used for displaying debugging information.
+  std::shared_ptr<ALLEGRO_FONT> debug_font;
+
   // Time interval between the latest two frames.
   // Measured in seconds.
-  std::chrono::duration<float> dt;
+  std::chrono::duration<double> dt;
 
   // Timestamp of the lastest frame.
   std::chrono::time_point<std::chrono::steady_clock> timestamp;

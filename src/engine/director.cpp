@@ -1,7 +1,7 @@
 #include <engine/director.hpp>
-Director::Director() : world(b2Vec2(0, 0)), dt() {}
+Director::Director() : dt(), world(b2Vec2(0, 0)) { debug_font = allegro.LoadFont("Lato/Lato-Regular.ttf", 12); }
 
-const float Director::kLoopInterval = 1.0f / 60.0f;
+const double Director::kLoopInterval = 1.0 / 120.0;
 const int Director::kPhysicsVelocityIterations = 8;
 const int Director::kPhysicsPositionIterations = 3;
 
@@ -17,8 +17,9 @@ void Director::Start() {
 
   while (true) {
     // Calculate delta t.
-    Director::Get().dt =
-        std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - Director::Get().timestamp);
+    auto now = std::chrono::steady_clock::now();
+    Get().dt = now - Get().timestamp;
+    Get().timestamp = now;
 
     // Handle events.
     auto ev = Director::Get().allegro.WaitForEventTimed(kLoopInterval);
@@ -59,6 +60,9 @@ void Director::Render() {
   for (; actors.first != actors.second; actors.first++) {
     actors.first->second->Render(Get().stage.GetCamera());
   }
+
+  // Display fps.
+  allegro.DrawText(debug_font, {255, 255, 255, 255}, 1, 1, Alignment::ALIGN_LEFT, std::to_string(1.0 / dt.count()));
 
   Director::Get().allegro.FlipDisplay();
 }

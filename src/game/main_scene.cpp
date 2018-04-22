@@ -10,7 +10,7 @@ void MainScene::Play(Stage &stage) const {
   cam.size = 15;
 
   // Set gravity.
-  Director::GetWorld().SetGravity(b2Vec2(0, -0.1));
+  Director::GetWorld().SetGravity(b2Vec2(0, -9.8));
 
   std::shared_ptr<Actor> a1 = stage.AddActor(1, std::sqrt(3) / 2.0f);
   if (a1 != nullptr) {
