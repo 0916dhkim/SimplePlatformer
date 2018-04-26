@@ -53,7 +53,7 @@ void Director::SimulatePhysics() {
 }
 
 void Director::Render() {
-  Director::Get().Allegro().ClearToColor({0, 0, 0, 255}); // Clear to black
+  Director::Get().Allegro().ClearToColor(Color::BLACK); // Clear to black
 
   // Render all actors.
   auto actors = Get().stage.GetActors();
@@ -62,7 +62,7 @@ void Director::Render() {
   }
 
   // Display fps.
-  allegro.DrawText(debug_font, {255, 255, 255, 255}, 1, 1, Alignment::ALIGN_LEFT, std::to_string(1.0 / dt.count()));
+  allegro.DrawText(debug_font, Color::WHITE, 1, 1, Alignment::ALIGN_LEFT, std::to_string(1.0 / dt.count()));
 
   Director::Get().allegro.FlipDisplay();
 }

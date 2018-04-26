@@ -25,7 +25,8 @@ public:
   void DrawLine(float x1, float y1, float x2, float y2, Color color, float thickness);
 
   // Wrapper for al_draw_text
-  void DrawText(const std::shared_ptr<ALLEGRO_FONT> &font, Color color, float x, float y, Alignment align, const std::string &text);
+  void DrawText(const std::shared_ptr<ALLEGRO_FONT> &font, Color color, float x, float y, Alignment align,
+                const std::string &text);
 
   // Wrapper for al_flip_display
   void FlipDisplay();
