@@ -1,6 +1,7 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_ACTOR_H
 #define SIMPLEPLATFORMER_ENGINE_ACTOR_H
 #include <cstdint>
+#include <engine/event/event_key_down.hpp>
 #include <engine/physics/physical_body.hpp>
 #include <engine/renderer/renderer.hpp>
 #include <engine/transform.hpp>
@@ -27,6 +28,9 @@ public:
 
   // Update actor transform with physical body transform.
   void UpdateActorTransform();
+
+  // Virtual method for handling key down event.
+  virtual void HandleKeyDownEvent(const EventKeyDown &e);
 
 protected:
   std::uint_fast64_t id;

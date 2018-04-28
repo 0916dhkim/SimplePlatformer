@@ -8,10 +8,15 @@ Allegro5Wrapper::Allegro5Wrapper() {
   al_init_font_addon();
   al_init_ttf_addon();
 
+  // Install drivers.
+  al_install_keyboard();
+  std::clog << "Allegro keyboard driver installed: " << std::boolalpha << al_is_keyboard_installed() << std::endl;
+
   al_set_new_display_option(ALLEGRO_VSYNC, 2, ALLEGRO_REQUIRE);
   display = al_create_display(kDefaultWidth, kDefaultHeight);
   event_queue = al_create_event_queue();
   al_register_event_source(event_queue, al_get_display_event_source(display));
+  al_register_event_source(event_queue, al_get_keyboard_event_source());
 }
 
 Allegro5Wrapper::~Allegro5Wrapper() {

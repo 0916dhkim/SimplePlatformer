@@ -1,4 +1,5 @@
 #include <engine/director.hpp>
+#include <engine/event/event_key_down.hpp>
 Director::Director() : dt(), world(b2Vec2(0, 0)) { debug_font = allegro.LoadFont("Lato/Lato-Regular.ttf", 12); }
 
 const double Director::kLoopInterval = 1.0 / 120.0;
@@ -28,6 +29,15 @@ void Director::Start() {
       if (ev->type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
         // Window close event fired.
         break;
+      }
+
+      // Call event handlers of actors.
+      auto actors = Get().stage.GetActors(); // Pair of begin and end of actor map.
+      if (ev->type == ALLEGRO_EVENT_KEY_DOWN) {
+        EventKeyDown e = {static_cast<KeyCode>(ev->keyboard.keycode)};
+        for (auto it = actors.first; it != actors.second; ++it) {
+          it->second->HandleKeyDownEvent(e);
+        }
       }
     }
 

@@ -15,7 +15,7 @@ public:
 
   // Add an actor to the stage.
   // Return the reference to the created actor.
-  std::shared_ptr<Actor> AddActor();
+  template <class A> std::shared_ptr<Actor> AddActor();
 
   Camera &GetCamera();
 
@@ -29,6 +29,9 @@ public:
   std::shared_ptr<GameInfo> GetGameInfo();
 
 private:
+  // Next available id number.
+  static std::uint_fast64_t next_id;
+
   // All actors
   std::map<std::uint_fast64_t, std::shared_ptr<Actor>> actors;
 
@@ -41,4 +44,15 @@ private:
   // Clear the stage.
   void Clear();
 };
+
+template <class A> std::shared_ptr<Actor> Stage::AddActor() {
+  auto res = actors.insert({next_id, std::make_shared<A>(next_id)});
+  if (res.second) {
+    // Insert successful.
+    next_id++;
+    return res.first->second;
+  }
+  // Insert failed.
+  return nullptr;
+}
 #endif // SIMPLEPLATFORMER_ENGINE_STAGE_H

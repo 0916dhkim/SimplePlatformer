@@ -1,0 +1,7 @@
+#ifndef SIMPLEPLATFORMER_ENGINE_EVENT_EVENT_KEY_DOWN
+#define SIMPLEPLATFORMER_ENGINE_EVENT_EVENT_KEY_DOWN
+#include <engine/event/keycode.hpp>
+struct EventKeyDown {
+  KeyCode keycode;
+};
+#endif // SIMPLEPLATFORMER_ENGINE_EVENT_EVENT_KEY_DOWN

@@ -12,6 +12,7 @@ add_executable(simpleplatformer
   engine/physics/physical_body.cpp
   engine/stage.cpp
   engine/transform.cpp
+  game/hero.cpp
   game/main_scene.cpp
   main.cpp
 )
