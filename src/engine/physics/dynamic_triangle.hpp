@@ -4,7 +4,7 @@
 #include <engine/transform.hpp>
 class DynamicTriangle : public PhysicalBody {
 public:
-  DynamicTriangle(const Transform &transform, const b2Vec2 &pivot,float sideLength);
+  DynamicTriangle(const Transform &transform, const b2Vec2 &pivot, float sideLength);
   void UpdateShape(const Transform &transform) override;
 
 private:

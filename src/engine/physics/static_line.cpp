@@ -1,6 +1,6 @@
 #include <engine/director.hpp>
 #include <engine/physics/static_line.hpp>
-StaticLine::StaticLine(const Transform &transform, const b2Vec2 &pivot, float length) : length(length), pivot(pivot){
+StaticLine::StaticLine(const Transform &transform, const b2Vec2 &pivot, float length) : length(length), pivot(pivot) {
   // Create body.
   b2BodyDef bdef;
   bdef.type = b2_staticBody;
@@ -19,7 +19,7 @@ void StaticLine::UpdateShapeImpl(const Transform &transform) {
   b2Vec2 p1(0, 0), p2(length, 0);
 
   // Apply pivot.
-  b2Vec2 pivot_point = b2Vec2(length*pivot.x, 0);
+  b2Vec2 pivot_point = b2Vec2(length * pivot.x, 0);
   p1 -= pivot_point;
   p2 -= pivot_point;
 

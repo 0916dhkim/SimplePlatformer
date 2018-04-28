@@ -14,7 +14,6 @@ Transform &Transform::operator=(const Transform &transform) = default;
 
 Transform &Transform::operator=(Transform &&transform) noexcept = default;
 
-
 b2Vec2 Transform::GetPosition() const { return b2transform.p; }
 
 float Transform::GetRotation() const { return b2transform.q.GetAngle(); }

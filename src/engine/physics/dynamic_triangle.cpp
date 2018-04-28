@@ -3,7 +3,8 @@
 #include <engine/director.hpp>
 #include <engine/physics/dynamic_triangle.hpp>
 #include <engine/transform.hpp>
-DynamicTriangle::DynamicTriangle(const Transform &transform, const b2Vec2 &pivot, float sideLength) : sideLength(sideLength), pivot(pivot) {
+DynamicTriangle::DynamicTriangle(const Transform &transform, const b2Vec2 &pivot, float sideLength)
+    : sideLength(sideLength), pivot(pivot) {
   // Create body.
   b2BodyDef bdef;
   bdef.type = b2_dynamicBody;
@@ -25,8 +26,8 @@ void DynamicTriangle::UpdateShapeImpl(const Transform &transform) {
   std::array<b2Vec2, 3> vertices = {b2Vec2(0, 0), b2Vec2(w, 0), b2Vec2(w / 2.0f, h)};
   for (b2Vec2 &v : vertices) {
     // Apply pivot.
-    v.x -= w*pivot.x;
-    v.y -= h*pivot.y;
+    v.x -= w * pivot.x;
+    v.y -= h * pivot.y;
   }
   shape.Set(vertices.data(), vertices.size());
 

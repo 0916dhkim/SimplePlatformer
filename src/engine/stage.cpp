@@ -31,6 +31,4 @@ std::shared_ptr<GameInfo> Stage::CreateGameInfo() {
   return gameinfo;
 }
 
-std::shared_ptr<GameInfo> Stage::GetGameInfo() {
-  return gameinfo;
-}
+std::shared_ptr<GameInfo> Stage::GetGameInfo() { return gameinfo; }

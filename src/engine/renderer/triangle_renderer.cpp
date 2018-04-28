@@ -2,9 +2,8 @@
 #include <engine/director.hpp>
 #include <engine/renderer/triangle_renderer.hpp>
 #include <utility>
-TriangleRenderer::TriangleRenderer(Transform& transform, float sideLength, const b2Vec2& pivot, const Color& color) : Renderer(transform, pivot), sideLength(sideLength), color(color)
-{
-}
+TriangleRenderer::TriangleRenderer(Transform &transform, float sideLength, const b2Vec2 &pivot, const Color &color)
+    : Renderer(transform, pivot), sideLength(sideLength), color(color) {}
 
 void TriangleRenderer::Render(const Camera &camera) const {
   // Find where vertices are.
@@ -13,8 +12,8 @@ void TriangleRenderer::Render(const Camera &camera) const {
   std::array<b2Vec2, 3> vertices = {b2Vec2(0, 0), b2Vec2(w / 2.0f, h), b2Vec2(w, 0)};
   for (b2Vec2 &v : vertices) {
     // Apply pivot.
-    v.x -= w*pivot.x;
-    v.y -= h*pivot.y;
+    v.x -= w * pivot.x;
+    v.y -= h * pivot.y;
     // Calculate screen coordinates.
     v = GetTransform().ToScreen(v, camera);
   }
