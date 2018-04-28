@@ -1,5 +1,6 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_ALLEGRO5_WRAPPER_H
 #define SIMPLEPLATFORMER_ENGINE_ALLEGRO5_WRAPPER_H
+#include <engine/alignment.hpp>
 #include <engine/color.hpp>
 #include <memory>
 extern "C" {
@@ -8,7 +9,6 @@ extern "C" {
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_ttf.h>
 }
-enum struct Alignment { ALIGN_LEFT = ALLEGRO_ALIGN_LEFT, ALIGN_RIGHT = ALLEGRO_ALIGN_RIGHT, ALIGN_CENTER = ALLEGRO_ALIGN_CENTER };
 
 class Allegro5Wrapper {
 public:
