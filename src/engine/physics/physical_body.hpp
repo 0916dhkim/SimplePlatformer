@@ -8,8 +8,10 @@ class PhysicalBody {
 public:
   virtual ~PhysicalBody();
 
-  // UpdateShape method might need be called inside the constructor, but calling a virtual method inside a constructor is not
-  // recommended. Therefore, make a non-virtual implementation of this function and call it inside the constructor if needed.
+  // UpdateShape method might need be called inside the constructor, but calling
+  // a virtual method inside a constructor is not recommended. Therefore, make a
+  // non-virtual implementation of this function and call it inside the
+  // constructor if needed.
   virtual void UpdateShape(const Transform &transform) = 0;
 
   void SetPosition(const b2Vec2 &position);

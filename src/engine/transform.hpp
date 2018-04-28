@@ -38,8 +38,8 @@ public:
   // and a camera instance.
   // Return the screen coordinates of the point.
   b2Vec2 ToScreen(const b2Vec2 &orig, const Camera &camera) const;
-  // Convert the point from local coordinate system where pivot is not accounted for
-  // to local coordinate system where pivot is at (0, 0).
+  // Convert the point from local coordinate system where pivot is not accounted
+  // for to local coordinate system where pivot is at (0, 0).
   b2Vec2 ToPivot(const b2Vec2 &orig) const;
 
 private:
