@@ -19,3 +19,14 @@ target_link_libraries(simpleplatformer box2d allegro allegro_font allegro_primit
 target_include_directories(simpleplatformer PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_compile_features(simpleplatformer PRIVATE cxx_std_11)
 set_target_properties(simpleplatformer PROPERTIES CXX_CLANG_TIDY "clang-tidy;-checks='*'")
+
+# Format
+file(GLOB_RECURSE format_targets *.cpp *.hpp)
+add_custom_target(
+	clang-format
+	COMMAND /usr/bin/clang-format
+	-style=file
+	-i
+	${format_targets}
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+)
