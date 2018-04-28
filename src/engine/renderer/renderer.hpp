@@ -7,13 +7,14 @@ class Transform;
 // Abstract class
 class Renderer {
 public:
-  Renderer(Transform &transform);
+  Renderer(Transform &transform, const b2Vec2 &pivot);
   virtual ~Renderer() {}
   virtual void Render(const Camera &camera) const = 0;
 
 protected:
   const Transform &GetTransform() const;
   Transform &GetTransform();
+  b2Vec2 pivot;
 
 private:
   Transform &transform;

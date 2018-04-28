@@ -8,7 +8,7 @@
 class Renderer;
 class Actor {
 public:
-  Actor(std::uint_fast64_t id, float width, float height);
+  Actor(std::uint_fast64_t id);
 
   // Replace actor's current body with the given one.
   void SetBody(std::unique_ptr<PhysicalBody> &&physical_body);
@@ -19,16 +19,12 @@ public:
   void SetPosition(const b2Vec2 &position);
   void SetPosition(float x, float y);
   void SetRotation(float rotation);
-  void SetPivot(const b2Vec2 &pivot);
-  void SetPivot(float x, float y);
 
   Transform &GetTransform();
 
   // Render the game object given the transform of the camera.
   void Render(const Camera &camera) const;
 
-  // Update physical body transform with actor transform.
-  void UpdatePhysicalTransform();
   // Update actor transform with physical body transform.
   void UpdateActorTransform();
 

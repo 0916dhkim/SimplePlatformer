@@ -15,7 +15,7 @@ public:
 
   // Add an actor to the stage.
   // Return the reference to the created actor.
-  std::shared_ptr<Actor> AddActor(float width, float height);
+  std::shared_ptr<Actor> AddActor();
 
   Camera &GetCamera();
 

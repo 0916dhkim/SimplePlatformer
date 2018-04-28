@@ -1,6 +1,6 @@
 #include <engine/actor.hpp>
 #include <engine/renderer/triangle_renderer.hpp>
-Actor::Actor(std::uint_fast64_t id, float width, float height) : id(id), transform(b2Vec2(width, height)) {}
+Actor::Actor(std::uint_fast64_t id) : id(id) {}
 
 void Actor::SetBody(std::unique_ptr<PhysicalBody> &&physical_body) { this->body = std::move(physical_body); }
 
@@ -27,29 +27,11 @@ void Actor::SetRotation(float rotation) {
   }
 }
 
-void Actor::SetPivot(const b2Vec2 &pivot) {
-  transform.SetPivot(pivot);
-  UpdatePhysicalTransform();
-}
-
-void Actor::SetPivot(float x, float y) {
-  transform.SetPivot(x, y);
-  UpdatePhysicalTransform();
-}
-
 Transform &Actor::GetTransform() { return transform; }
 
 void Actor::Render(const Camera &camera) const {
   if (renderer != nullptr) {
     renderer->Render(camera);
-  }
-}
-
-void Actor::UpdatePhysicalTransform() {
-  if (body != nullptr) {
-    body->SetPosition(transform.GetPosition());
-    body->SetRotation(transform.GetRotation());
-    body->UpdateShape(transform);
   }
 }
 

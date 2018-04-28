@@ -5,7 +5,7 @@
 // Primitive renderer class that renders a equilateral triangle.
 class TriangleRenderer : public Renderer {
 public:
-  TriangleRenderer(Transform &transform, float sideLength, const Color &color);
+  TriangleRenderer(Transform &transform, float sideLength, const b2Vec2 &pivot, const Color &color);
   void Render(const Camera &camera) const override;
 
 private:

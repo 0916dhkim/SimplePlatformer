@@ -1,10 +1,9 @@
 #include <engine/director.hpp>
 #include <engine/transform.hpp>
 #include <utility>
-Transform::Transform(const b2Vec2 &size) : size(size) {
+Transform::Transform() {
   b2transform.Set(b2Vec2(0, 0), 0);
   scale.Set(1, 1);
-  pivot.Set(0, 0);
 }
 
 Transform::Transform(const Transform &transform) = default;
@@ -15,19 +14,12 @@ Transform &Transform::operator=(const Transform &transform) = default;
 
 Transform &Transform::operator=(Transform &&transform) noexcept = default;
 
-b2Vec2 Transform::GetPivot() const { return pivot; }
 
 b2Vec2 Transform::GetPosition() const { return b2transform.p; }
 
 float Transform::GetRotation() const { return b2transform.q.GetAngle(); }
 
 b2Vec2 Transform::GetScale() const { return scale; }
-
-b2Vec2 Transform::GetSize() const { return size; }
-
-void Transform::SetPivot(const b2Vec2 &pivot) { this->pivot = pivot; }
-
-void Transform::SetPivot(float x, float y) { this->pivot.Set(x, y); }
 
 void Transform::SetPosition(const b2Vec2 &position) { this->b2transform.p = position; }
 
@@ -76,14 +68,4 @@ b2Vec2 Transform::ToScreen(const b2Vec2 &orig, const Camera &camera) const {
   return {ret.x, ret.y};
 }
 
-b2Vec2 Transform::ToWorld(const b2Vec2 &orig) const { return b2Mul(b2transform, ToPivot(orig)); }
-
-b2Vec2 Transform::ToPivot(const b2Vec2 &orig) const {
-  // Convert to 3D vector.
-  b2Vec3 v3(orig.x, orig.y, 1);
-  b2Mat33 pivotMat(b2Vec3(1, 0, 0), b2Vec3(0, 1, 0), b2Vec3(-pivot.x * size.x, -pivot.y * size.y, 1));
-  b2Mat33 scaleMat(b2Vec3(scale.x, 0, 0), b2Vec3(0, scale.y, 0), b2Vec3(0, 0, 1));
-
-  b2Vec3 ret = b2Mul(scaleMat, b2Mul(pivotMat, v3));
-  return {ret.x, ret.y};
-}
+b2Vec2 Transform::ToWorld(const b2Vec2 &local) const { return b2Mul(b2transform, local); }
