@@ -5,6 +5,7 @@ add_executable(simpleplatformer
   engine/allegro5_wrapper.cpp
   engine/color.cpp
   engine/director.cpp
+  engine/gameinfo.cpp
   engine/renderer/triangle_renderer.cpp
   engine/renderer/line_renderer.cpp
   engine/renderer/renderer.cpp
