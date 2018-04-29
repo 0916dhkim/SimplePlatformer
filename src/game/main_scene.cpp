@@ -21,23 +21,23 @@ void MainScene::Play(Stage &stage) const {
 
   std::shared_ptr<Actor> a1 = stage.AddActor<Actor>();
   if (a1 != nullptr) {
-    a1->SetRenderer(std::unique_ptr<Renderer>(new TriangleRenderer(a1->GetTransform(), 1, b2Vec2(0.5, 0.5), Color::WHITE)));
-    a1->SetBody(std::unique_ptr<PhysicalBody>(new DynamicTriangle(a1->GetTransform(), b2Vec2(0.5, 0.5), 1)));
+    a1->SetRenderer(std::unique_ptr<Renderer>(new TriangleRenderer(*(a1.get()), 1, b2Vec2(0.5, 0.5), Color::WHITE)));
+    a1->SetBody(std::unique_ptr<PhysicalBody>(new DynamicTriangle(*(a1.get()), b2Vec2(0.5, 0.5), 1)));
     a1->SetPosition(3, 8);
   }
 
   std::shared_ptr<Actor> a2 = stage.AddActor<Actor>();
   if (a2 != nullptr) {
     a2->SetPosition(0, 13);
-    a2->SetRenderer(std::unique_ptr<Renderer>(new TriangleRenderer(a2->GetTransform(), 5, b2Vec2(0, 0.5), Color::GREEN)));
-    a2->SetBody(std::unique_ptr<PhysicalBody>(new DynamicTriangle(a2->GetTransform(), b2Vec2(0, 0.5), 5)));
+    a2->SetRenderer(std::unique_ptr<Renderer>(new TriangleRenderer(*(a2.get()), 5, b2Vec2(0, 0.5), Color::GREEN)));
+    a2->SetBody(std::unique_ptr<PhysicalBody>(new DynamicTriangle(*(a2.get()), b2Vec2(0, 0.5), 5)));
   }
 
   std::shared_ptr<Actor> a3 = stage.AddActor<Actor>();
   if (a3 != nullptr) {
     a3->SetRotation(0.1);
-    a3->SetRenderer(std::unique_ptr<Renderer>(new LineRenderer(a3->GetTransform(), b2Vec2(0, 0), 20, Color::RED)));
-    a3->SetBody(std::unique_ptr<PhysicalBody>(new StaticLine(a3->GetTransform(), b2Vec2(0, 0), 20)));
+    a3->SetRenderer(std::unique_ptr<Renderer>(new LineRenderer(*(a3.get()), b2Vec2(0, 0), 20, Color::RED)));
+    a3->SetBody(std::unique_ptr<PhysicalBody>(new StaticLine(*(a3.get()), b2Vec2(0, 0), 20)));
     a3->SetPosition(-7, -7);
   }
 }

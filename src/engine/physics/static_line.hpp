@@ -3,14 +3,14 @@
 #include <engine/physics/physical_body.hpp>
 class StaticLine : public PhysicalBody {
 public:
-  StaticLine(const Transform &transform, const b2Vec2 &pivot, float length);
-  void UpdateShape(const Transform &transform) override;
+  StaticLine(Actor &actor, const b2Vec2 &pivot, float length);
+  void UpdateShape() override;
 
 private:
   float length;
   b2Vec2 pivot;
 
   // Non-virtual implementation of UpdateShape.
-  void UpdateShapeImpl(const Transform &transform);
+  void UpdateShapeImpl();
 };
 #endif // SIMPLEPLATFORMER_ENGINE_PHYSICS_STATIC_LINE_H

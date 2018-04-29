@@ -3,22 +3,22 @@
 #include <engine/director.hpp>
 #include <engine/physics/dynamic_triangle.hpp>
 #include <engine/transform.hpp>
-DynamicTriangle::DynamicTriangle(const Transform &transform, const b2Vec2 &pivot, float sideLength)
-    : sideLength(sideLength), pivot(pivot) {
+DynamicTriangle::DynamicTriangle(Actor &actor, const b2Vec2 &pivot, float sideLength)
+    : PhysicalBody(actor), sideLength(sideLength), pivot(pivot) {
   // Create body.
   b2BodyDef bdef;
   bdef.type = b2_dynamicBody;
-  bdef.position = transform.GetPosition();
-  bdef.angle = transform.GetRotation();
+  bdef.position = actor.GetTransform().GetPosition();
+  bdef.angle = actor.GetTransform().GetRotation();
   body = Director::GetWorld().CreateBody(&bdef);
 
   // Create Fixture.
-  UpdateShapeImpl(transform);
+  UpdateShapeImpl();
 }
 
-void DynamicTriangle::UpdateShape(const Transform &transform) { return UpdateShapeImpl(transform); }
+void DynamicTriangle::UpdateShape() { return UpdateShapeImpl(); }
 
-void DynamicTriangle::UpdateShapeImpl(const Transform &transform) {
+void DynamicTriangle::UpdateShapeImpl() {
   // Calculate the new shape.
   b2PolygonShape shape;
   float w = sideLength;

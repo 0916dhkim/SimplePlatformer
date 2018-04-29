@@ -1,4 +1,6 @@
 #include <engine/physics/physical_body.hpp>
+PhysicalBody::PhysicalBody(Actor &actor) : actor(actor) {}
+
 PhysicalBody::~PhysicalBody() {
   // Destroy the body from the world.
   body->GetWorld()->DestroyBody(body);

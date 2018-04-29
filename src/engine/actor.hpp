@@ -6,6 +6,7 @@
 #include <engine/renderer/renderer.hpp>
 #include <engine/transform.hpp>
 #include <memory>
+class PhysicalBody;
 class Renderer;
 class Actor {
 public:

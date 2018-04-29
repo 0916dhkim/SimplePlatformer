@@ -1,19 +1,19 @@
 #include <engine/director.hpp>
 #include <engine/physics/static_line.hpp>
-StaticLine::StaticLine(const Transform &transform, const b2Vec2 &pivot, float length) : length(length), pivot(pivot) {
+StaticLine::StaticLine(Actor &actor, const b2Vec2 &pivot, float length) : PhysicalBody(actor), length(length), pivot(pivot) {
   // Create body.
   b2BodyDef bdef;
   bdef.type = b2_staticBody;
-  bdef.position = transform.GetPosition();
-  bdef.angle = transform.GetRotation();
+  bdef.position = actor.GetTransform().GetPosition();
+  bdef.angle = actor.GetTransform().GetRotation();
   body = Director::GetWorld().CreateBody(&bdef);
 
-  UpdateShapeImpl(transform);
+  UpdateShapeImpl();
 }
 
-void StaticLine::UpdateShape(const Transform &transform) { return UpdateShapeImpl(transform); }
+void StaticLine::UpdateShape() { return UpdateShapeImpl(); }
 
-void StaticLine::UpdateShapeImpl(const Transform &transform) {
+void StaticLine::UpdateShapeImpl() {
   // Calculate the new shape.
   b2EdgeShape shape;
   b2Vec2 p1(0, 0), p2(length, 0);

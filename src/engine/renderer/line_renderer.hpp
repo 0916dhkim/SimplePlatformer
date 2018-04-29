@@ -4,7 +4,7 @@
 #include <engine/renderer/renderer.hpp>
 class LineRenderer : public Renderer {
 public:
-  LineRenderer(Transform &transform, const b2Vec2 &pivot, float length, const Color &color);
+  LineRenderer(Actor &actor, const b2Vec2 &pivot, float length, const Color &color);
   void Render(const Camera &camera) const override;
 
 private:

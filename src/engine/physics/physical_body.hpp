@@ -1,18 +1,21 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_PHYSICS_PHYSICAL_BODY_H
 #define SIMPLEPLATFORMER_ENGINE_PHYSICS_PHYSICAL_BODY_H
 #include <Box2D/Box2D.h>
+#include <engine/actor.hpp>
 #include <engine/transform.hpp>
 #include <memory>
 #include <vector>
+class Actor;
 class PhysicalBody {
 public:
+  PhysicalBody(Actor &actor);
   virtual ~PhysicalBody();
 
   // UpdateShape method might need be called inside the constructor, but calling
   // a virtual method inside a constructor is not recommended. Therefore, make a
   // non-virtual implementation of this function and call it inside the
   // constructor if needed.
-  virtual void UpdateShape(const Transform &transform) = 0;
+  virtual void UpdateShape() = 0;
 
   void SetPosition(const b2Vec2 &position);
   void SetRotation(float rotation);
@@ -22,6 +25,9 @@ public:
   float GetRotation();
 
 protected:
+  // Reference to the actor this body belongs to.
+  Actor &actor;
+
   // Box2D body.
   // This should be automatically cleaned up by world.
   // Destructor should not free or delete this.
