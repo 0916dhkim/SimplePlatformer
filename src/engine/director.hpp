@@ -9,7 +9,7 @@
 // Director class manages all scenes in game.
 // This is a singleton class, so at any given time, there should only be one
 // instance of Director existing.
-class Director {
+class Director : b2ContactListener {
 public:
   // Get Allegro Wrapper.
   static Allegro5Wrapper &Allegro();
@@ -22,6 +22,10 @@ public:
 
   // Start the main game loop.
   static void Start();
+
+  // b2ContactListener methods override.
+  void BeginContact(b2Contact *contact) override;
+  void EndContact(b2Contact *contact) override;
 
 private:
   // Default refresh rate.

@@ -4,6 +4,7 @@
 #include <engine/gameinfo.hpp>
 #include <map>
 #include <memory>
+#include <vector>
 class Stage {
 public:
   Stage() = default;
@@ -20,10 +21,8 @@ public:
   Camera &GetCamera();
 
   // Return the begin and the end iterator of actors.
-  std::pair<std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator,
-            std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator>
-  GetActors();
-  std::shared_ptr<Actor> GetActor(std::uint_fast64_t id);
+  std::vector<std::weak_ptr<Actor>> GetActors();
+  std::weak_ptr<Actor> GetActor(std::uint_fast64_t id);
 
   // Create new gameinfo object and discard the old one.
   std::shared_ptr<GameInfo> CreateGameInfo();

@@ -1,7 +1,8 @@
 #ifndef SIMPLEPLATFORMER_ENGINE_ACTOR_H
 #define SIMPLEPLATFORMER_ENGINE_ACTOR_H
 #include <cstdint>
-#include <engine/event/event_contact.hpp>
+#include <engine/event/event_begin_contact.hpp>
+#include <engine/event/event_end_contact.hpp>
 #include <engine/event/event_key_down.hpp>
 #include <engine/physics/physical_body.hpp>
 #include <engine/renderer/renderer.hpp>
@@ -34,8 +35,11 @@ public:
   // Update method is called evey frame.
   virtual void Update() {}
 
-  // Virtual method for handling contact.
-  virtual void HandleContactEvent(const EventContact &e) {}
+  // Virtual method for handling begin contact.
+  virtual void HandleBeginContactEvent(const EventBeginContact &e) {}
+
+  // Virtual method for handling end contact.
+  virtual void HandleEndContact(const EventEndContact &e) {}
 
   // Virtual method for handling key down event.
   virtual void HandleKeyDownEvent(const EventKeyDown &e) {}

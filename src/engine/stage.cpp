@@ -8,16 +8,20 @@ void Stage::Clear() {
 
 Camera &Stage::GetCamera() { return camera; }
 
-std::pair<std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator,
-          std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator>
-Stage::GetActors() {
-  return std::make_pair(actors.begin(), actors.end());
+std::vector<std::weak_ptr<Actor>> Stage::GetActors() {
+  std::vector<std::weak_ptr<Actor>> ret(actors.size());
+  int ii;
+  std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator it;
+  for (ii = 0, it = actors.begin(); it != actors.end(); ++ii, ++it) {
+    ret[ii] = it->second;
+  }
+  return ret;
 }
 
-std::shared_ptr<Actor> Stage::GetActor(std::uint_fast64_t id) {
+std::weak_ptr<Actor> Stage::GetActor(std::uint_fast64_t id) {
   auto a = actors.find(id);
   if (a == actors.end()) {
-    return nullptr;
+    return std::weak_ptr<Actor>();
   }
   return a->second;
 }
