@@ -29,6 +29,15 @@ void Actor::SetRotation(float rotation) {
 
 Transform &Actor::GetTransform() { return transform; }
 
+std::set<std::string> Actor::GetTags() const {
+  // Copy tags set and return.
+  return std::set<std::string>(tags);
+}
+
+void Actor::AddTag(const std::string &tag) { tags.insert(tag); }
+
+void Actor::RemoveTag(const std::string &tag) { tags.erase(tag); }
+
 void Actor::Render(const Camera &camera) const {
   if (renderer != nullptr) {
     renderer->Render(camera);

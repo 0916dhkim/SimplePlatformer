@@ -8,6 +8,7 @@
 #include <engine/renderer/renderer.hpp>
 #include <engine/transform.hpp>
 #include <memory>
+#include <set>
 class PhysicalBody;
 class Renderer;
 class Actor {
@@ -25,6 +26,10 @@ public:
   void SetRotation(float rotation);
 
   Transform &GetTransform();
+
+  std::set<std::string> GetTags() const;
+  void AddTag(const std::string &tag);
+  void RemoveTag(const std::string &tag);
 
   // Render the game object given the transform of the camera.
   void Render(const Camera &camera) const;
@@ -51,5 +56,8 @@ protected:
   std::unique_ptr<PhysicalBody> body;
   Transform transform;
   std::unique_ptr<Renderer> renderer;
+
+private:
+  std::set<std::string> tags;
 };
 #endif // SIMPLEPLATFORMER_ENGINE_ACTOR_H
