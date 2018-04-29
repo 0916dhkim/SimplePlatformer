@@ -41,13 +41,3 @@ void Actor::UpdateActorTransform() {
     transform.SetRotation(body->GetRotation());
   }
 }
-
-void Actor::Update() {
-  // Do nothing here.
-  // This method should be overriden by child classes.
-}
-
-void Actor::HandleKeyDownEvent(const EventKeyDown &e) {
-  // Do nothing here.
-  // This method should be overriden by child classes.
-}

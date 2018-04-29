@@ -1,4 +1,5 @@
 #include <engine/director.hpp>
+#include <engine/event/event_contact.hpp>
 #include <engine/event/event_key_down.hpp>
 Director::Director() : dt(), world(b2Vec2(0, 0)) { debug_font = allegro.LoadFont("Lato/Lato-Regular.ttf", 12); }
 
@@ -23,6 +24,21 @@ void Director::Start() {
     Get().timestamp = now;
 
     Get().SimulatePhysics();
+    b2Contact *contact = Get().world.GetContactList();
+    while (contact) {
+      // Handle contacts.
+      std::uint_fast64_t id_a = PhysicalBody::GetUserData(contact->GetFixtureA()->GetBody());
+      std::uint_fast64_t id_b = PhysicalBody::GetUserData(contact->GetFixtureB()->GetBody());
+      std::shared_ptr<Actor> actor_a = Get().stage.GetActor(id_a);
+      std::shared_ptr<Actor> actor_b = Get().stage.GetActor(id_b);
+      EventContact event_a = {id_b};
+      EventContact event_b = {id_a};
+      if (actor_a)
+        actor_a->HandleContactEvent(event_a);
+      if (actor_b)
+        actor_b->HandleContactEvent(event_b);
+      contact = contact->GetNext();
+    }
 
     // Handle events.
     auto actors = Get().stage.GetActors(); // Pair of begin and end of actor map.

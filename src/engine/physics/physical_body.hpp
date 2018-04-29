@@ -24,6 +24,8 @@ public:
   const float GetRotation() const;
   float GetRotation();
 
+  static const std::uint_fast64_t GetUserData(const b2Body *body);
+
 protected:
   // Reference to the actor this body belongs to.
   Actor &actor;
@@ -35,6 +37,5 @@ protected:
 
   // Box2D user data manipulation.
   void *MakeUserData() const;
-  static const std::uint_fast64_t GetUserData(const b2Body *body);
 };
 #endif // SIMPLEPLATFORMER_ENGINE_PHYSICS_PHYSICAL_BODY_H

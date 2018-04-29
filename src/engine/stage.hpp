@@ -23,6 +23,7 @@ public:
   std::pair<std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator,
             std::map<std::uint_fast64_t, std::shared_ptr<Actor>>::iterator>
   GetActors();
+  std::shared_ptr<Actor> GetActor(std::uint_fast64_t id);
 
   // Create new gameinfo object and discard the old one.
   std::shared_ptr<GameInfo> CreateGameInfo();

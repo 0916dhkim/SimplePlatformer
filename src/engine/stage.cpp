@@ -14,6 +14,14 @@ Stage::GetActors() {
   return std::make_pair(actors.begin(), actors.end());
 }
 
+std::shared_ptr<Actor> Stage::GetActor(std::uint_fast64_t id) {
+  auto a = actors.find(id);
+  if (a == actors.end()) {
+    return nullptr;
+  }
+  return a->second;
+}
+
 std::shared_ptr<GameInfo> Stage::CreateGameInfo() {
   gameinfo.reset(new GameInfo());
   return gameinfo;
