@@ -22,6 +22,8 @@ void Director::Start() {
     Get().dt = now - Get().timestamp;
     Get().timestamp = now;
 
+    Get().SimulatePhysics();
+
     // Handle events.
     auto ev = Director::Get().allegro.WaitForEventTimed(kLoopInterval);
 
@@ -41,7 +43,6 @@ void Director::Start() {
       }
     }
 
-    Get().SimulatePhysics();
     Get().Render();
   }
 }
