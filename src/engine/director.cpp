@@ -25,22 +25,23 @@ void Director::Start() {
     Get().SimulatePhysics();
 
     // Handle events.
+    auto actors = Get().stage.GetActors(); // Pair of begin and end of actor map.
     auto ev = Director::Get().allegro.WaitForEventTimed(kLoopInterval);
-
     if (ev != nullptr) {
       if (ev->type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
-        // Window close event fired.
+        // Window close event.
         break;
-      }
-
-      // Call event handlers of actors.
-      auto actors = Get().stage.GetActors(); // Pair of begin and end of actor map.
-      if (ev->type == ALLEGRO_EVENT_KEY_DOWN) {
+      } else if (ev->type == ALLEGRO_EVENT_KEY_DOWN) {
+        // Key down event.
         EventKeyDown e = {static_cast<KeyCode>(ev->keyboard.keycode)};
         for (auto it = actors.first; it != actors.second; ++it) {
           it->second->HandleKeyDownEvent(e);
         }
       }
+    }
+    for (auto it = actors.first; it != actors.second; ++it) {
+      // Update method is called evey frame.
+      it->second->Update();
     }
 
     Get().Render();

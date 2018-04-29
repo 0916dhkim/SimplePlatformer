@@ -30,6 +30,9 @@ public:
   // Update actor transform with physical body transform.
   void UpdateActorTransform();
 
+  // Update method is called evey frame.
+  virtual void Update();
+
   // Virtual method for handling key down event.
   virtual void HandleKeyDownEvent(const EventKeyDown &e);
 
