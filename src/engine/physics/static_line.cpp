@@ -6,6 +6,7 @@ StaticLine::StaticLine(Actor &actor, const b2Vec2 &pivot, float length) : Physic
   bdef.type = b2_staticBody;
   bdef.position = actor.GetTransform().GetPosition();
   bdef.angle = actor.GetTransform().GetRotation();
+  bdef.userData = MakeUserData();
   body = Director::GetWorld().CreateBody(&bdef);
 
   UpdateShapeImpl();

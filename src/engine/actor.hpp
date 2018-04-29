@@ -33,8 +33,10 @@ public:
   // Virtual method for handling key down event.
   virtual void HandleKeyDownEvent(const EventKeyDown &e);
 
+  // ID number of this.
+  const std::uint_fast64_t id;
+
 protected:
-  std::uint_fast64_t id;
   std::unique_ptr<PhysicalBody> body;
   Transform transform;
   std::unique_ptr<Renderer> renderer;

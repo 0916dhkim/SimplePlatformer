@@ -7,4 +7,4 @@ Hero::Hero(std::uint_fast64_t id) : Actor(id) {
   SetBody(std::unique_ptr<PhysicalBody>(new DynamicTriangle(*this, b2Vec2(0.5, 0.5), 1)));
 }
 
-void Hero::HandleKeyDownEvent(const EventKeyDown &e) { SetPosition(0, 8); }
+void Hero::HandleKeyDownEvent(const EventKeyDown &e) { SetPosition(0, 5); }

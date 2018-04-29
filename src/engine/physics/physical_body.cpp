@@ -6,7 +6,10 @@ PhysicalBody::~PhysicalBody() {
   body->GetWorld()->DestroyBody(body);
 }
 
-void PhysicalBody::SetPosition(const b2Vec2 &position) { body->SetTransform(position, body->GetAngle()); }
+void PhysicalBody::SetPosition(const b2Vec2 &position) {
+  body->SetAwake(true);
+  body->SetTransform(position, body->GetAngle());
+}
 
 const b2Vec2 PhysicalBody::GetPosition() const { return body->GetPosition(); }
 
@@ -16,4 +19,13 @@ const float PhysicalBody::GetRotation() const { return body->GetAngle(); }
 
 float PhysicalBody::GetRotation() { return body->GetAngle(); }
 
-void PhysicalBody::SetRotation(float rotation) { body->SetTransform(body->GetPosition(), rotation); }
+void PhysicalBody::SetRotation(float rotation) {
+  body->SetAwake(true);
+  body->SetTransform(body->GetPosition(), rotation);
+}
+
+void *PhysicalBody::MakeUserData() const { return const_cast<std::uint_fast64_t *>(&(actor.id)); }
+
+const std::uint_fast64_t PhysicalBody::GetUserData(const b2Body *body) {
+  return *(static_cast<std::uint_fast64_t *>(body->GetUserData()));
+}

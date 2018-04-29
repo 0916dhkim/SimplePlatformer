@@ -10,6 +10,7 @@ DynamicTriangle::DynamicTriangle(Actor &actor, const b2Vec2 &pivot, float sideLe
   bdef.type = b2_dynamicBody;
   bdef.position = actor.GetTransform().GetPosition();
   bdef.angle = actor.GetTransform().GetRotation();
+  bdef.userData = MakeUserData();
   body = Director::GetWorld().CreateBody(&bdef);
 
   // Create Fixture.

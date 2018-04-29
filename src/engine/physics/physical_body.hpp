@@ -32,5 +32,9 @@ protected:
   // This should be automatically cleaned up by world.
   // Destructor should not free or delete this.
   b2Body *body;
+
+  // Box2D user data manipulation.
+  void *MakeUserData() const;
+  static const std::uint_fast64_t GetUserData(const b2Body *body);
 };
 #endif // SIMPLEPLATFORMER_ENGINE_PHYSICS_PHYSICAL_BODY_H
