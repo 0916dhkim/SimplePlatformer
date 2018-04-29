@@ -30,6 +30,7 @@ public:
   std::set<std::string> GetTags() const;
   void AddTag(const std::string &tag);
   void RemoveTag(const std::string &tag);
+  bool HasTag(const std::string &tag) const;
 
   // Render the game object given the transform of the camera.
   void Render(const Camera &camera) const;

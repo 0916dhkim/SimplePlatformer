@@ -38,6 +38,15 @@ void Actor::AddTag(const std::string &tag) { tags.insert(tag); }
 
 void Actor::RemoveTag(const std::string &tag) { tags.erase(tag); }
 
+bool Actor::HasTag(const std::string &tag) const {
+  auto t = tags.find(tag);
+  if (t == tags.end()) {
+    // No match
+    return false;
+  }
+  return true;
+}
+
 void Actor::Render(const Camera &camera) const {
   if (renderer != nullptr) {
     renderer->Render(camera);
