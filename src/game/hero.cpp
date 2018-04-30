@@ -1,4 +1,5 @@
 #include <engine/director.hpp>
+#include <engine/event/keycode.hpp>
 #include <engine/physics/dynamic_triangle.hpp>
 #include <engine/renderer/triangle_renderer.hpp>
 #include <game/hero.hpp>
@@ -8,6 +9,18 @@ Hero::Hero(std::uint_fast64_t id) : Actor(id) {
   AddTag("hero");
 }
 
-void Hero::HandleKeyDownEvent(const EventKeyDown &e) { SetPosition(0, 5); }
+void Hero::HandleKeyDownEvent(const EventKeyDown &e) {
+  if (e.keycode == KeyCode::UP) {
+    // Check if hero is touching ground.
+    std::vector<std::weak_ptr<Actor>> actors = body->GetTouchingActors();
+    for (auto actor : actors) {
+      if (!actor.expired() && actor.lock()->HasTag("ground")) {
+        // Jump.
+        body->ApplyLinearImpulse(b2Vec2(0, 10));
+        break;
+      }
+    }
+  }
+}
 
 void Hero::Update() { Director::GetCamera().transform.p = GetTransform().GetPosition(); }

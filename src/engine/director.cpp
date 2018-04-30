@@ -13,6 +13,8 @@ const int Director::kPhysicsPositionIterations = 3;
 
 Allegro5Wrapper &Director::Allegro() { return Director::Get().allegro; }
 
+std::weak_ptr<Actor> Director::GetActor(std::uint_fast64_t id) { return Get().stage.GetActor(id); }
+
 Camera &Director::GetCamera() { return Get().stage.GetCamera(); }
 
 b2World &Director::GetWorld() { return Director::Get().world; }

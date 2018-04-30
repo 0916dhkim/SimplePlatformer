@@ -14,6 +14,9 @@ public:
   // Get Allegro Wrapper.
   static Allegro5Wrapper &Allegro();
 
+  // Get an actor from stage.
+  static std::weak_ptr<Actor> GetActor(std::uint_fast64_t id);
+
   // Get stage's camera object.
   static Camera &GetCamera();
 

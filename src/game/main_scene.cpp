@@ -12,7 +12,7 @@ void MainScene::Play(Stage &stage) const {
   cam.size = 15;
 
   // Set gravity.
-  Director::GetWorld().SetGravity(b2Vec2(0, -9.8));
+  Director::GetWorld().SetGravity(b2Vec2(0, -40));
 
   std::shared_ptr<Actor> hero = stage.AddActor<Hero>();
   if (hero != nullptr) {
@@ -39,5 +39,6 @@ void MainScene::Play(Stage &stage) const {
     a3->SetRenderer(std::unique_ptr<Renderer>(new LineRenderer(*(a3.get()), b2Vec2(0, 0), 20, Color::RED)));
     a3->SetBody(std::unique_ptr<PhysicalBody>(new StaticLine(*(a3.get()), b2Vec2(0, 0), 20)));
     a3->SetPosition(-7, -7);
+    a3->AddTag("ground");
   }
 }

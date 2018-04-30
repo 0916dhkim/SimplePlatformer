@@ -24,6 +24,10 @@ public:
   const float GetRotation() const;
   float GetRotation();
 
+  std::vector<std::weak_ptr<Actor>> GetTouchingActors();
+
+  void ApplyLinearImpulse(const b2Vec2 &impulse);
+
   static const std::uint_fast64_t GetUserData(const b2Body *body);
 
 protected:
