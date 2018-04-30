@@ -4,6 +4,7 @@
 #include <engine/event/event_begin_contact.hpp>
 #include <engine/event/event_end_contact.hpp>
 #include <engine/event/event_key_down.hpp>
+#include <engine/event/event_key_up.hpp>
 #include <engine/physics/physical_body.hpp>
 #include <engine/renderer/renderer.hpp>
 #include <engine/transform.hpp>
@@ -49,6 +50,9 @@ public:
 
   // Virtual method for handling key down event.
   virtual void HandleKeyDownEvent(const EventKeyDown &e) {}
+
+  // Virtual method for handling key up event.
+  virtual void HandleKeyUpEvent(const EventKeyUp &e) {}
 
   // ID number of this.
   const std::uint_fast64_t id;

@@ -42,6 +42,10 @@ std::vector<std::weak_ptr<Actor>> PhysicalBody::GetTouchingActors() {
 
 void PhysicalBody::ApplyLinearImpulse(const b2Vec2 &impulse) { body->ApplyLinearImpulseToCenter(impulse, true); }
 
+b2Vec2 PhysicalBody::GetLinearVelocity() const { return body->GetLinearVelocity(); }
+
+void PhysicalBody::SetLinearVelocity(const b2Vec2 &velocity) { body->SetLinearVelocity(velocity); }
+
 void *PhysicalBody::MakeUserData() const { return const_cast<std::uint_fast64_t *>(&(actor.id)); }
 
 const std::uint_fast64_t PhysicalBody::GetUserData(const b2Body *body) {

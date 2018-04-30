@@ -2,6 +2,7 @@
 #include <engine/event/event_begin_contact.hpp>
 #include <engine/event/event_end_contact.hpp>
 #include <engine/event/event_key_down.hpp>
+#include <engine/event/event_key_up.hpp>
 Director::Director() : dt(), world(b2Vec2(0, 0)) {
   world.SetContactListener(this);
   debug_font = allegro.LoadFont("Lato/Lato-Regular.ttf", 12);
@@ -37,17 +38,34 @@ void Director::Start() {
     std::vector<std::weak_ptr<Actor>> actors = Get().stage.GetActors();
     auto ev = Director::Get().allegro.WaitForEventTimed(kLoopInterval);
     if (ev != nullptr) {
-      if (ev->type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
-        // Window close event.
+      bool close = false;
+      switch (ev->type) {
+      case ALLEGRO_EVENT_DISPLAY_CLOSE:
+        close = true;
         break;
-      } else if (ev->type == ALLEGRO_EVENT_KEY_DOWN) {
-        // Key down event.
+      case ALLEGRO_EVENT_KEY_DOWN: {
         EventKeyDown e = {static_cast<KeyCode>(ev->keyboard.keycode)};
         for (auto actor : actors) {
           if (!actor.expired()) {
             actor.lock()->HandleKeyDownEvent(e);
           }
         }
+        break;
+      }
+      case ALLEGRO_EVENT_KEY_UP: {
+        EventKeyUp e = {static_cast<KeyCode>(ev->keyboard.keycode)};
+        for (auto actor : actors) {
+          if (!actor.expired()) {
+            actor.lock()->HandleKeyUpEvent(e);
+          }
+        }
+        break;
+      }
+      default:
+        break;
+      }
+      if (close) {
+        break;
       }
     }
     for (auto actor : actors) {

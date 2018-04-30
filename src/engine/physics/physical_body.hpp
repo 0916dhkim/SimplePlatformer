@@ -27,6 +27,8 @@ public:
   std::vector<std::weak_ptr<Actor>> GetTouchingActors();
 
   void ApplyLinearImpulse(const b2Vec2 &impulse);
+  b2Vec2 GetLinearVelocity() const;
+  void SetLinearVelocity(const b2Vec2 &velocity);
 
   static const std::uint_fast64_t GetUserData(const b2Body *body);
 
