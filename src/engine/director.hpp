@@ -14,6 +14,9 @@ public:
   // Get Allegro Wrapper.
   static Allegro5Wrapper &Allegro();
 
+  // Get stage's camera object.
+  static Camera &GetCamera();
+
   // Get Box2D world.
   static b2World &GetWorld();
 

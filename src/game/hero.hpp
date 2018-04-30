@@ -5,5 +5,6 @@ class Hero : public Actor {
 public:
   Hero(std::uint_fast64_t id);
   void HandleKeyDownEvent(const EventKeyDown &e) override;
+  void Update() override;
 };
 #endif // SIMPLEPLATFORMER_GAME_HERO_HPP

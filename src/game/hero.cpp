@@ -1,3 +1,4 @@
+#include <engine/director.hpp>
 #include <engine/physics/dynamic_triangle.hpp>
 #include <engine/renderer/triangle_renderer.hpp>
 #include <game/hero.hpp>
@@ -8,3 +9,5 @@ Hero::Hero(std::uint_fast64_t id) : Actor(id) {
 }
 
 void Hero::HandleKeyDownEvent(const EventKeyDown &e) { SetPosition(0, 5); }
+
+void Hero::Update() { Director::GetCamera().transform.p = GetTransform().GetPosition(); }

@@ -13,6 +13,8 @@ const int Director::kPhysicsPositionIterations = 3;
 
 Allegro5Wrapper &Director::Allegro() { return Director::Get().allegro; }
 
+Camera &Director::GetCamera() { return Get().stage.GetCamera(); }
+
 b2World &Director::GetWorld() { return Director::Get().world; }
 
 void Director::LoadScene(const Scene &scene) { scene.Play(Director::Get().stage); }
