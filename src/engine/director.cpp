@@ -81,15 +81,15 @@ void Director::Start() {
 void Director::BeginContact(b2Contact *contact) {
   std::uint_fast64_t id_a = PhysicalBody::GetUserData(contact->GetFixtureA()->GetBody());
   std::uint_fast64_t id_b = PhysicalBody::GetUserData(contact->GetFixtureB()->GetBody());
-  std::weak_ptr<Actor> actor_a = stage.GetActor(id_a);
-  std::weak_ptr<Actor> actor_b = stage.GetActor(id_b);
+  std::shared_ptr<Actor> actor_a = stage.GetActor(id_a).lock();
+  std::shared_ptr<Actor> actor_b = stage.GetActor(id_b).lock();
   EventBeginContact event_a{id_b};
   EventBeginContact event_b{id_a};
-  if (!actor_a.expired()) {
-    actor_a.lock()->HandleBeginContactEvent(event_a);
+  if (actor_a) {
+    actor_a->HandleBeginContactEvent(event_a);
   }
-  if (!actor_b.expired()) {
-    actor_b.lock()->HandleBeginContactEvent(event_b);
+  if (actor_b) {
+    actor_b->HandleBeginContactEvent(event_b);
   }
 }
 
