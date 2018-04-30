@@ -16,6 +16,7 @@ public:
 
   // Add an actor to the stage.
   // Return the reference to the created actor.
+  // TODO Change return type to weak_ptr.
   template <class A> std::shared_ptr<Actor> AddActor();
 
   Camera &GetCamera();

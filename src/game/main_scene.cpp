@@ -41,4 +41,13 @@ void MainScene::Play(Stage &stage) const {
     a3->SetPosition(-7, -7);
     a3->AddTag("ground");
   }
+
+  std::shared_ptr<Actor> a4 = stage.AddActor<Actor>();
+  if (a4 != nullptr) {
+    a4->SetRotation(-0.1);
+    a4->SetRenderer(std::unique_ptr<Renderer>(new LineRenderer(*(a4.get()), b2Vec2(1, 0), 20, Color::BLUE)));
+    a4->SetBody(std::unique_ptr<PhysicalBody>(new StaticLine(*(a4.get()), b2Vec2(1, 0), 20)));
+    a4->SetPosition(-7, -7);
+    a4->AddTag("ground");
+  }
 }
