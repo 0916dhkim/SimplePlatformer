@@ -16,8 +16,7 @@ public:
 
   // Add an actor to the stage.
   // Return the reference to the created actor.
-  // TODO Change return type to weak_ptr.
-  template <class A> std::shared_ptr<Actor> AddActor();
+  template <class A> std::weak_ptr<Actor> AddActor();
 
   Camera &GetCamera();
 
@@ -46,7 +45,7 @@ private:
   void Clear();
 };
 
-template <class A> std::shared_ptr<Actor> Stage::AddActor() {
+template <class A> std::weak_ptr<Actor> Stage::AddActor() {
   auto res = actors.insert({next_id, std::make_shared<A>(next_id)});
   if (res.second) {
     // Insert successful.
@@ -54,6 +53,6 @@ template <class A> std::shared_ptr<Actor> Stage::AddActor() {
     return res.first->second;
   }
   // Insert failed.
-  return nullptr;
+  return std::weak_ptr<A>();
 }
 #endif // SIMPLEPLATFORMER_ENGINE_STAGE_H
