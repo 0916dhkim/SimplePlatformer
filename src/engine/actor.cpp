@@ -1,5 +1,5 @@
 #include <engine/actor.hpp>
-Actor::Actor(std::uint_fast64_t id) : id(id) {}
+Actor::Actor(std::uint_fast64_t id) : id(id), layer(0) {}
 
 void Actor::SetBody(std::unique_ptr<PhysicalBody> &&physical_body) { this->body = std::move(physical_body); }
 

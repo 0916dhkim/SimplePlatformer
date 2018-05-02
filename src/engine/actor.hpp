@@ -57,6 +57,9 @@ public:
   // ID number of this.
   const std::uint_fast64_t id;
 
+  // Layer number.
+  int layer;
+
 protected:
   std::unique_ptr<PhysicalBody> body;
   Transform transform;

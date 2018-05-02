@@ -1,4 +1,5 @@
 #include <engine/director.hpp>
+#include <queue>
 Director::Director() : dt(), world(b2Vec2(0, 0)) {
   world.SetContactListener(this);
   debug_font = allegro.LoadFont("Lato/Lato-Regular.ttf", 12);
@@ -122,15 +123,25 @@ void Director::SimulatePhysics() {
   }
 }
 
+struct ActorComparatorByLayer {
+  bool operator()(std::shared_ptr<Actor> a, std::shared_ptr<Actor> b) { return a->layer < b->layer; };
+};
+
 void Director::Render() {
   Director::Get().Allegro().ClearToColor(Color::BLACK); // Clear to black
 
   // Render all actors.
+  std::priority_queue<std::shared_ptr<Actor>, std::vector<std::shared_ptr<Actor>>, ActorComparatorByLayer> render_queue;
   auto actors = Get().stage.GetActors();
   for (auto actor : actors) {
+    // Add all actors to render queue.
     if (!actor.expired()) {
-      actor.lock()->Render(Get().stage.GetCamera());
+      render_queue.push(actor.lock());
     }
+  }
+  while (!render_queue.empty()) {
+    render_queue.top()->Render(Get().stage.GetCamera());
+    render_queue.pop();
   }
 
   // Display fps.
