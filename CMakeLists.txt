@@ -15,6 +15,7 @@ target_include_directories (allegro PUBLIC "${ALLEGRO_SOURCE_DIR}/include" "${AL
 target_include_directories (allegro_primitives PUBLIC "${ALLEGRO_SOURCE_DIR}/addons/primitives")
 target_include_directories (allegro_font PUBLIC "${ALLEGRO_SOURCE_DIR}/addons/font")
 target_include_directories (allegro_ttf PUBLIC "${ALLEGRO_SOURCE_DIR}/addons/ttf")
+target_include_directories (allegro_image PUBLIC "${ALLEGRO_SOURCE_DIR}/addons/image")
 
 
 # Box2D

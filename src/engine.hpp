@@ -11,6 +11,7 @@
 #include <engine/physics/physical_body.hpp>
 #include <engine/physics/static_line.hpp>
 
+#include <engine/renderer/bitmap_renderer.hpp>
 #include <engine/renderer/line_renderer.hpp>
 #include <engine/renderer/renderer.hpp>
 #include <engine/renderer/triangle_renderer.hpp>
