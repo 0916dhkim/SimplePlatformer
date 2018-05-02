@@ -1,8 +1,4 @@
 #include <engine/director.hpp>
-#include <engine/event/event_begin_contact.hpp>
-#include <engine/event/event_end_contact.hpp>
-#include <engine/event/event_key_down.hpp>
-#include <engine/event/event_key_up.hpp>
 Director::Director() : dt(), world(b2Vec2(0, 0)) {
   world.SetContactListener(this);
   debug_font = allegro.LoadFont("Lato/Lato-Regular.ttf", 12);

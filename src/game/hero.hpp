@@ -1,6 +1,6 @@
 #ifndef SIMPLEPLATFORMER_GAME_HERO_HPP
 #define SIMPLEPLATFORMER_GAME_HERO_HPP
-#include <engine/actor.hpp>
+#include <engine.hpp>
 class Hero : public Actor {
 public:
   Hero(std::uint_fast64_t id);

@@ -1,9 +1,3 @@
-#include <engine/color.hpp>
-#include <engine/director.hpp>
-#include <engine/physics/dynamic_triangle.hpp>
-#include <engine/physics/static_line.hpp>
-#include <engine/renderer/line_renderer.hpp>
-#include <engine/renderer/triangle_renderer.hpp>
 #include <game/hero.hpp>
 #include <game/main_scene.hpp>
 void MainScene::Play(Stage &stage) const {

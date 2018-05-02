@@ -1,5 +1,4 @@
 #include <engine/actor.hpp>
-#include <engine/renderer/triangle_renderer.hpp>
 Actor::Actor(std::uint_fast64_t id) : id(id) {}
 
 void Actor::SetBody(std::unique_ptr<PhysicalBody> &&physical_body) { this->body = std::move(physical_body); }

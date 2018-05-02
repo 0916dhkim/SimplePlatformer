@@ -2,7 +2,6 @@
 #include <cmath>
 #include <engine/director.hpp>
 #include <engine/physics/dynamic_triangle.hpp>
-#include <engine/transform.hpp>
 DynamicTriangle::DynamicTriangle(Actor &actor, const b2Vec2 &pivot, float sideLength)
     : PhysicalBody(actor), sideLength(sideLength), pivot(pivot) {
   // Create body.

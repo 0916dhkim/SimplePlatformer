@@ -1,7 +1,3 @@
-#include <engine/director.hpp>
-#include <engine/event/keycode.hpp>
-#include <engine/physics/dynamic_triangle.hpp>
-#include <engine/renderer/triangle_renderer.hpp>
 #include <game/hero.hpp>
 Hero::Hero(std::uint_fast64_t id) : Actor(id), move_speed(10), moving_right(false), moving_left(false) {
   SetRenderer(std::unique_ptr<Renderer>(new TriangleRenderer(*this, 1, b2Vec2(0.5, 0.5), Color::RED)));
