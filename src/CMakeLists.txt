@@ -1,6 +1,7 @@
 add_executable(simpleplatformer
   engine/physics/dynamic_triangle.cpp
   engine/physics/static_line.cpp
+  engine/physics/static_triangle.cpp
   engine/actor.cpp
   engine/allegro5_wrapper.cpp
   engine/color.cpp
@@ -15,6 +16,7 @@ add_executable(simpleplatformer
   engine/transform.cpp
   game/hero.cpp
   game/main_scene.cpp
+  game/spike.cpp
   main.cpp
 )
 target_link_libraries(simpleplatformer box2d allegro allegro_font allegro_primitives allegro_ttf allegro_image)

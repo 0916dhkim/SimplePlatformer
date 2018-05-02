@@ -13,7 +13,7 @@ void Hero::HandleKeyDownEvent(const EventKeyDown &e) {
     for (auto actor : actors) {
       if (!actor.expired() && actor.lock()->HasTag("ground")) {
         // Jump.
-        body->ApplyLinearImpulse(b2Vec2(0, 10));
+        body->ApplyLinearImpulse(b2Vec2(0, 7));
         break;
       }
     }

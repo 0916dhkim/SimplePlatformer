@@ -10,6 +10,7 @@
 #include <engine/physics/dynamic_triangle.hpp>
 #include <engine/physics/physical_body.hpp>
 #include <engine/physics/static_line.hpp>
+#include <engine/physics/static_triangle.hpp>
 
 #include <engine/renderer/bitmap_renderer.hpp>
 #include <engine/renderer/line_renderer.hpp>

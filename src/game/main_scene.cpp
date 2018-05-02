@@ -1,9 +1,10 @@
 #include <game/hero.hpp>
 #include <game/main_scene.hpp>
+#include <game/spike.hpp>
 void MainScene::Play(Stage &stage) const {
   // Set camera.
   Camera &cam = stage.GetCamera();
-  cam.size = 15;
+  cam.size = 12;
 
   // Set gravity.
   Director::GetWorld().SetGravity(b2Vec2(0, -40));
@@ -11,13 +12,6 @@ void MainScene::Play(Stage &stage) const {
   std::shared_ptr<Actor> hero = stage.AddActor<Hero>().lock();
   if (hero != nullptr) {
     hero->SetPosition(0, 8);
-  }
-
-  std::shared_ptr<Actor> a1 = stage.AddActor<Actor>().lock();
-  if (a1 != nullptr) {
-    a1->SetRenderer(std::unique_ptr<Renderer>(new TriangleRenderer(*(a1.get()), 1, b2Vec2(0.5, 0.5), Color::WHITE)));
-    a1->SetBody(std::unique_ptr<PhysicalBody>(new DynamicTriangle(*(a1.get()), b2Vec2(0.5, 0.5), 1)));
-    a1->SetPosition(3, 8);
   }
 
   std::shared_ptr<Actor> a2 = stage.AddActor<Actor>().lock();
@@ -43,5 +37,10 @@ void MainScene::Play(Stage &stage) const {
     a4->SetBody(std::unique_ptr<PhysicalBody>(new StaticLine(*(a4.get()), b2Vec2(1, 0), 20)));
     a4->SetPosition(-7, -7);
     a4->AddTag("ground");
+  }
+
+  std::shared_ptr<Actor> spike1 = stage.AddActor<Spike>().lock();
+  if (spike1) {
+    spike1->SetPosition(-11, -6);
   }
 }
