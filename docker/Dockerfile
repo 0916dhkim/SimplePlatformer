@@ -16,6 +16,6 @@ RUN git clone --recurse-submodules https://github.com/0916dhkim/SimplePlatformer
 RUN mkdir /app
 WORKDIR /app
 RUN cmake /repo
-RUN make simpleplatformer
+RUN make
 
 CMD ["/app/bin/simpleplatformer"]

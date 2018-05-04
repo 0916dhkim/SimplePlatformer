@@ -24,7 +24,7 @@ void MainScene::Play(Stage &stage) const {
   std::shared_ptr<Actor> a3 = stage.AddActor<Actor>().lock();
   if (a3 != nullptr) {
     a3->SetRotation(0.1);
-    a3->SetRenderer(std::unique_ptr<Renderer>(new LineRenderer(*(a3.get()), b2Vec2(0, 0), 20, Color::RED)));
+    a3->SetRenderer(std::unique_ptr<Renderer>(new LineRenderer(*(a3.get()), b2Vec2(0, 0), 20, Color::WHITE)));
     a3->SetBody(std::unique_ptr<PhysicalBody>(new StaticLine(*(a3.get()), b2Vec2(0, 0), 20)));
     a3->SetPosition(-7, -7);
     a3->AddTag("ground");
@@ -33,7 +33,7 @@ void MainScene::Play(Stage &stage) const {
   std::shared_ptr<Actor> a4 = stage.AddActor<Actor>().lock();
   if (a4 != nullptr) {
     a4->SetRotation(-0.1);
-    a4->SetRenderer(std::unique_ptr<Renderer>(new LineRenderer(*(a4.get()), b2Vec2(1, 0), 20, Color::BLUE)));
+    a4->SetRenderer(std::unique_ptr<Renderer>(new LineRenderer(*(a4.get()), b2Vec2(1, 0), 20, Color::WHITE)));
     a4->SetBody(std::unique_ptr<PhysicalBody>(new StaticLine(*(a4.get()), b2Vec2(1, 0), 20)));
     a4->SetPosition(-7, -7);
     a4->AddTag("ground");
@@ -41,6 +41,16 @@ void MainScene::Play(Stage &stage) const {
 
   std::shared_ptr<Actor> spike1 = stage.AddActor<Spike>().lock();
   if (spike1) {
-    spike1->SetPosition(-11, -6);
+    spike1->SetRotation(-0.1);
+    spike1->SetPosition(-11, -7);
+  }
+
+  std::shared_ptr<Actor> bg = stage.AddActor<Actor>().lock();
+  if (bg) {
+    bg->SetPosition(0, 0);
+    bg->GetTransform().SetScale(2, 2);
+    bg->SetRenderer(std::unique_ptr<Renderer>(
+        new BitmapRenderer(*bg, b2Vec2(0.5, 0.5), "parallax_mountain_pack/layers/parallax-mountain-bg.png", 50, 30)));
+    bg->layer = 2;
   }
 }
